@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class youtubeCamara : MonoBehaviour
+public class CamaraController : MonoBehaviour
 {
     public Transform objASeguir;
     public float velCamara = 120;
