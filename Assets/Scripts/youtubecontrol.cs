@@ -21,7 +21,7 @@ public class youtubecontrol : MonoBehaviour
     float velocidadGiro;
     float gravedad = -9.81f;
     Vector3 velocity;
-    bool tocaPiso;
+    public bool tocaPiso;
 
     private void Start()
     {
@@ -35,7 +35,7 @@ public class youtubecontrol : MonoBehaviour
 
         if (tocaPiso && velocity.y <0)
         {
-            velocity.y = -2f;
+            velocity.y = -3f;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && tocaPiso)
