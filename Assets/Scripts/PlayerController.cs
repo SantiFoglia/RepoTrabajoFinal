@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +25,12 @@ public class PlayerController : MonoBehaviour
     Vector3 velocity;
     public bool tocaPiso;
 
+    //flechas
+    public GameObject flechaPrefab;
+    public GameObject flecha;
+    public Transform spawnFlecha;
+    public GameObject mira;
+
 
     private void Start()
     {
@@ -34,19 +41,43 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        DetectarPiso();
+
+        Roll();
+
+        Salto();
+
+        Movimiento();
+
+        Disparar();
+
+        
+    }
+
+    
+
+    void DetectarPiso()
+    {
         tocaPiso = Physics.CheckSphere(detectaPiso.position, distanciaPiso, mascaraPiso);
 
-        if (tocaPiso && velocity.y <0)
+        if (tocaPiso && velocity.y < 0)
         {
             velocity.y = -2f;
             anim.SetBool("salto", false);
         }
+    }
+    void Roll()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && tocaPiso)
+        {
 
-        //if (!tocaPiso)
-        //{
-        //    anim.SetBool("salto", true);
-        //}
+            anim.SetTrigger("roll");
+        }
 
+
+    }
+    void Salto()
+    {
         if (Input.GetKeyDown(KeyCode.Space) && tocaPiso)
         {
 
@@ -54,9 +85,9 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("salto", true);
 
         }
-
-        Roll();
-
+    }
+    void Movimiento()
+    {
         velocity.y += gravedad * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
@@ -65,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 direccion = new Vector3(hor, 0, ver).normalized;
 
-        if(direccion.magnitude <=0) anim.SetFloat("Movimientos", 0, 0.1f, Time.deltaTime);
+        if (direccion.magnitude <= 0) anim.SetFloat("Movimientos", 0, 0.1f, Time.deltaTime);
 
         if (direccion.magnitude >= 0.1f)
         {
@@ -92,19 +123,16 @@ public class PlayerController : MonoBehaviour
                 anim.SetFloat("Movimientos", 0.5f, 0.1f, Time.deltaTime);
             }
 
-            
+
         }
     }
-
-    void Roll()
+    void Disparar()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && tocaPiso)
+        if (Input.GetMouseButtonDown(0))
         {
-
-            anim.SetTrigger("roll");
+            flecha = Instantiate(flechaPrefab, spawnFlecha.position, spawnFlecha.rotation);
+            flecha.GetComponent<Rigidbody>().AddForce(spawnFlecha.forward * 50, ForceMode.Impulse);
         }
-
-
     }
 
 }
