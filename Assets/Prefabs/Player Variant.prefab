@@ -228,7 +228,9 @@ MonoBehaviour:
     m_Bits: 8
   tocaPiso: 0
   flechaPrefab: {fileID: 0}
+  flecha: {fileID: 0}
   spawnFlecha: {fileID: 0}
+  mira: {fileID: 0}
 --- !u!4 &5301477771813534210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b8e8cc0d825d1e74ab20cafce9bc440f, type: 3}
