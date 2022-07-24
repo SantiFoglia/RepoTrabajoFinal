@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public GameObject flecha;
     public Transform spawnFlecha;
     public GameObject mira;
+    private float cooldownDisparo = 0.6f;
+    private float tiempoRestanteParaAtacar;
+    private bool puedeAtacar;
 
 
     private void Start()
@@ -48,6 +51,8 @@ public class PlayerController : MonoBehaviour
         Salto();
 
         Movimiento();
+
+        CooldownDisparo();
 
         Disparar();
 
@@ -128,11 +133,29 @@ public class PlayerController : MonoBehaviour
     }
     void Disparar()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && puedeAtacar)
         {
-            flecha = Instantiate(flechaPrefab, spawnFlecha.position, spawnFlecha.rotation);
-            flecha.GetComponent<Rigidbody>().AddForce(spawnFlecha.forward * 50, ForceMode.Impulse);
+            puedeAtacar = false;
+            tiempoRestanteParaAtacar = cooldownDisparo;
+            anim.SetTrigger("ataque");
+            StartCoroutine(tiempoAnimacionAtaque());
+
         }
     }
 
+    void CooldownDisparo()
+    {
+        tiempoRestanteParaAtacar -= Time.deltaTime;
+        if (tiempoRestanteParaAtacar <= 0)
+        {
+            puedeAtacar = true;
+        }
+    }
+
+    IEnumerator tiempoAnimacionAtaque()
+    {
+        yield return new WaitForSeconds(0.3f);
+        flecha = Instantiate(flechaPrefab, spawnFlecha.position, spawnFlecha.rotation);
+        flecha.GetComponent<Rigidbody>().AddForce(spawnFlecha.forward * 50, ForceMode.Impulse);
+    }
 }
