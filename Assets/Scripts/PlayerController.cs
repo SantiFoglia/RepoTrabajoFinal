@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private GameObject camara;
     private Animator anim;
+    private BoxCollider _boxCollider;
 
     //estadisticas
     public float velocidad;
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     float gravedad = -9.81f;
     Vector3 velocity;
     public bool tocaPiso;
+    public bool estaRolleando;
 
     //flechas
     public GameObject flechaPrefab;
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         camara = GameObject.FindGameObjectWithTag("MainCamera");
         anim = GetComponent<Animator>();
+        _boxCollider = GetComponent<BoxCollider>();
     }
 
     private void Update()
@@ -75,7 +78,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && tocaPiso)
         {
-
+            StartCoroutine(tiempoAnimacionRoll());
+            _boxCollider.enabled = false;
+            estaRolleando = true;
+            puedeAtacar = false;
             anim.SetTrigger("roll");
         }
 
@@ -133,7 +139,7 @@ public class PlayerController : MonoBehaviour
     }
     void Disparar()
     {
-        if (Input.GetMouseButtonDown(0) && puedeAtacar)
+        if (Input.GetMouseButtonDown(0) && puedeAtacar && tocaPiso && !estaRolleando)
         {
             puedeAtacar = false;
             tiempoRestanteParaAtacar = cooldownDisparo;
@@ -142,7 +148,6 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
     void CooldownDisparo()
     {
         tiempoRestanteParaAtacar -= Time.deltaTime;
@@ -157,5 +162,14 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         flecha = Instantiate(flechaPrefab, spawnFlecha.position, spawnFlecha.rotation);
         flecha.GetComponent<Rigidbody>().AddForce(spawnFlecha.forward * 50, ForceMode.Impulse);
+    }
+
+    IEnumerator tiempoAnimacionRoll()
+    {
+        yield return new WaitForSeconds(1.0f);
+        estaRolleando = false;
+        _boxCollider.enabled = true;
+
+
     }
 }
