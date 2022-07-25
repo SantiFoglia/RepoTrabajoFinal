@@ -36,6 +36,9 @@ public class PlayerController : MonoBehaviour
     private float tiempoRestanteParaAtacar;
     private bool puedeAtacar;
 
+    //apuntar
+    public bool estaApuntando;
+
 
     private void Start()
     {
@@ -58,6 +61,8 @@ public class PlayerController : MonoBehaviour
         CooldownDisparo();
 
         Disparar();
+
+        Apuntar();
 
         
     }
@@ -154,6 +159,27 @@ public class PlayerController : MonoBehaviour
         if (tiempoRestanteParaAtacar <= 0)
         {
             puedeAtacar = true;
+        }
+    }
+    void Apuntar()
+    {
+        
+
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            float hor = Input.GetAxis("Horizontal");
+            float ver = Input.GetAxis("Vertical");
+
+            estaApuntando = true;
+            anim.SetBool("apuntando", true);
+
+            anim.SetFloat("movimientoApuntandoEjeY", ver, 0.1f, Time.deltaTime);
+            anim.SetFloat("movimientoApuntandoEjeX", hor, 0.1f, Time.deltaTime);
+        }
+        else
+        {
+            estaApuntando = false;
+            anim.SetBool("apuntando", false);
         }
     }
 
