@@ -37,7 +37,11 @@ public class PlayerController : MonoBehaviour
     private bool puedeAtacar;
 
     //apuntar
-    public bool estaApuntando;
+    public bool estaApuntando = false;
+    CamaraController controladorCamara;
+    public LayerMask LayerMaskObjAApuntar;
+    public Collider[] arrayEnemigos;
+    public int objAApuntar = 0;
 
 
     private void Start()
@@ -46,6 +50,7 @@ public class PlayerController : MonoBehaviour
         camara = GameObject.FindGameObjectWithTag("MainCamera");
         anim = GetComponent<Animator>();
         _boxCollider = GetComponent<BoxCollider>();
+        //LayerMaskObjAApuntar = LayerMask.GetMask("Enemy");
     }
 
     private void Update()
@@ -114,33 +119,34 @@ public class PlayerController : MonoBehaviour
 
         if (direccion.magnitude <= 0) anim.SetFloat("Movimientos", 0, 0.1f, Time.deltaTime);
 
-        if (direccion.magnitude >= 0.1f)
-        {
-            //calcular nuevo angulo
-            float objetivoAngulo = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg + camara.transform.eulerAngles.y;
-            //aplicar ese angulo suavizado en el eje y a una velocidad, un giro y un tiempo dado
-            float angulo = Mathf.SmoothDampAngle(transform.eulerAngles.y, objetivoAngulo, ref velocidadGiro, tiempoAlGirar);
-            transform.rotation = Quaternion.Euler(0, angulo, 0);
-
-            if (Input.GetKey(KeyCode.LeftControl))
+            if (direccion.magnitude >= 0.1f)
             {
-                //ahora se va a mover hacia el lado donde giramos
-                Vector3 mover = Quaternion.Euler(0, objetivoAngulo, 0) * Vector3.forward;
-                controller.Move(mover.normalized * velocidadCorriendo * Time.deltaTime);
+                //calcular nuevo angulo
+                float objetivoAngulo = Mathf.Atan2(direccion.x, direccion.z) * Mathf.Rad2Deg + camara.transform.eulerAngles.y;
+                //aplicar ese angulo suavizado en el eje y a una velocidad, un giro y un tiempo dado
+                float angulo = Mathf.SmoothDampAngle(transform.eulerAngles.y, objetivoAngulo, ref velocidadGiro, tiempoAlGirar);
+                transform.rotation = Quaternion.Euler(0, angulo, 0);
 
-                anim.SetFloat("Movimientos", 1f, 0.1f, Time.deltaTime);
+                if (Input.GetKey(KeyCode.LeftControl) && !estaApuntando)
+                {
+                    //ahora se va a mover hacia el lado donde giramos
+                    Vector3 mover = Quaternion.Euler(0, objetivoAngulo, 0) * Vector3.forward;
+                    controller.Move(mover.normalized * velocidadCorriendo * Time.deltaTime);
+
+                    anim.SetFloat("Movimientos", 1f, 0.1f, Time.deltaTime);
+                }
+                else
+                {
+                    //ahora se va a mover hacia el lado donde giramos
+                    Vector3 mover = Quaternion.Euler(0, objetivoAngulo, 0) * Vector3.forward;
+                    controller.Move(mover.normalized * velocidad * Time.deltaTime);
+
+                    anim.SetFloat("Movimientos", 0.5f, 0.1f, Time.deltaTime);
+                }
+
+
             }
-            else
-            {
-                //ahora se va a mover hacia el lado donde giramos
-                Vector3 mover = Quaternion.Euler(0, objetivoAngulo, 0) * Vector3.forward;
-                controller.Move(mover.normalized * velocidad * Time.deltaTime);
 
-                anim.SetFloat("Movimientos", 0.5f, 0.1f, Time.deltaTime);
-            }
-
-
-        }
     }
     void Disparar()
     {
@@ -163,10 +169,20 @@ public class PlayerController : MonoBehaviour
     }
     void Apuntar()
     {
+
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            arrayEnemigos = Physics.OverlapSphere(transform.position, 40f, LayerMaskObjAApuntar);
+
+            velocidad -= 3;
+
+        }
         
 
         if (Input.GetKey(KeyCode.Mouse1))
         {
+            
             float hor = Input.GetAxis("Horizontal");
             float ver = Input.GetAxis("Vertical");
 
@@ -175,11 +191,42 @@ public class PlayerController : MonoBehaviour
 
             anim.SetFloat("movimientoApuntandoEjeY", ver, 0.1f, Time.deltaTime);
             anim.SetFloat("movimientoApuntandoEjeX", hor, 0.1f, Time.deltaTime);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                objAApuntar++;
+                
+                if (objAApuntar == arrayEnemigos.Length)
+                {
+                    objAApuntar = 0;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                objAApuntar--;
+                
+                if (objAApuntar < 0)
+                {
+                    objAApuntar = arrayEnemigos.Length - 1;
+                }
+            }
+
+
         }
         else
         {
             estaApuntando = false;
             anim.SetBool("apuntando", false);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            arrayEnemigos = Physics.OverlapSphere(transform.position, 40f, LayerMaskObjAApuntar);
+
+            velocidad += 3;
+
+            objAApuntar = 0;
         }
     }
 
