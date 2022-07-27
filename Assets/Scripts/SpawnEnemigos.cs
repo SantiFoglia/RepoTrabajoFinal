@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class SpawnEnemigos : MonoBehaviour
 {
-    public List<GameObject> listaEnemigos;
+    public List<GameObject> listaSpawnsEnemigos;
     public GameObject golem;
+    public GameObject miniGolem;
+    public Dictionary<int,string> nombres;
 
 
     void Start()
     {
-        foreach (GameObject enemigo in listaEnemigos)
+        nombres = new Dictionary<int, string>();
+
+        nombres.Add(1, "golem");
+        nombres.Add(2, "miniGolem");
+
+        foreach (GameObject spawn in listaSpawnsEnemigos)
         {
-            Instantiate(golem, enemigo.transform.position, enemigo.transform.rotation);
+            if (spawn.name == nombres[1])
+            {
+                Instantiate(golem, spawn.transform.position, spawn.transform.rotation);
+            }
+            if (spawn.name == nombres[2])
+            {
+                Instantiate(miniGolem, spawn.transform.position, spawn.transform.rotation);
+            }
+
         }
     }
 }

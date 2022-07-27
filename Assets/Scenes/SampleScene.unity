@@ -138,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 79474522}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 245465044}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284661554}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,7 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 363675057}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -725,7 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e08713990eabbb048886d0daafb5cd5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listaEnemigos:
+  listaSpawnsEnemigos:
   - {fileID: 1683587030}
   - {fileID: 1155766207}
   - {fileID: 284661553}
@@ -740,6 +740,7 @@ MonoBehaviour:
   - {fileID: 932125807}
   - {fileID: 2000662882}
   golem: {fileID: 1431595251377721449, guid: 3f094f59e43e3e844b7e6ac07777b10a, type: 3}
+  miniGolem: {fileID: 1431595251377721449, guid: 3f094f59e43e3e844b7e6ac07777b10a, type: 3}
 --- !u!4 &739375072
 Transform:
   m_ObjectHideFlags: 0
@@ -938,7 +939,7 @@ GameObject:
   m_Component:
   - component: {fileID: 932125808}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1268,7 +1269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1101116359}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1299,7 +1300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1121108547}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1335,7 +1336,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1155766208}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1595,7 +1596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1260367410}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1914,7 +1915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1655506763}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2083,7 +2084,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1683587031}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2517,7 +2518,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1946845712}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2636,7 +2637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2000662883}
   m_Layer: 6
-  m_Name: spawnGolem
+  m_Name: golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
