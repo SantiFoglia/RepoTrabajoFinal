@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private BoxCollider _boxCollider;
 
+    //InputTeclas
+
+    public Dictionary<string,KeyCode> inputTeclas;
+
     //estadisticas
     public float velocidad;
     public float velocidadCorriendo;
@@ -51,10 +55,12 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         _boxCollider = GetComponent<BoxCollider>();
         //LayerMaskObjAApuntar = LayerMask.GetMask("Enemy");
+        CrearinputTeclas();
     }
 
     private void Update()
     {
+
         DetectarPiso();
 
         Roll();
@@ -72,8 +78,19 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    
 
+    void CrearinputTeclas()
+    {
+        inputTeclas = new Dictionary<string, KeyCode>();
+
+        inputTeclas.Add("saltar", KeyCode.Space);
+        inputTeclas.Add("rollear", KeyCode.LeftShift);
+        inputTeclas.Add("correr", KeyCode.LeftControl);
+        inputTeclas.Add("disparar", KeyCode.Mouse0);
+        inputTeclas.Add("apuntar", KeyCode.Mouse1);
+        inputTeclas.Add("cambiarObjD", KeyCode.E);
+        inputTeclas.Add("cambiarObjI", KeyCode.Q);
+    }
     void DetectarPiso()
     {
         tocaPiso = Physics.CheckSphere(detectaPiso.position, distanciaPiso, mascaraPiso);
@@ -86,7 +103,7 @@ public class PlayerController : MonoBehaviour
     }
     void Roll()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && tocaPiso)
+        if (Input.GetKeyDown(inputTeclas["rollear"]) && tocaPiso)
         {
             StartCoroutine(tiempoAnimacionRoll());
             _boxCollider.enabled = false;
@@ -99,9 +116,9 @@ public class PlayerController : MonoBehaviour
     }
     void Salto()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && tocaPiso)
-        {
 
+        if (Input.GetKeyDown(inputTeclas["saltar"]) && tocaPiso)
+        {
             velocity.y = Mathf.Sqrt(alturaDeSalto * -2 * gravedad);
             anim.SetBool("salto", true);
 
@@ -127,7 +144,7 @@ public class PlayerController : MonoBehaviour
                 float angulo = Mathf.SmoothDampAngle(transform.eulerAngles.y, objetivoAngulo, ref velocidadGiro, tiempoAlGirar);
                 transform.rotation = Quaternion.Euler(0, angulo, 0);
 
-                if (Input.GetKey(KeyCode.LeftControl) && !estaApuntando)
+                if (Input.GetKey(inputTeclas["correr"]) && !estaApuntando)
                 {
                     //ahora se va a mover hacia el lado donde giramos
                     Vector3 mover = Quaternion.Euler(0, objetivoAngulo, 0) * Vector3.forward;
@@ -150,7 +167,7 @@ public class PlayerController : MonoBehaviour
     }
     void Disparar()
     {
-        if (Input.GetMouseButtonDown(0) && puedeAtacar && tocaPiso && !estaRolleando)
+        if (Input.GetKeyDown(inputTeclas["disparar"]) && puedeAtacar && tocaPiso && !estaRolleando)
         {
             puedeAtacar = false;
             tiempoRestanteParaAtacar = cooldownDisparo;
@@ -171,7 +188,7 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKeyDown(inputTeclas["apuntar"]))
         {
             arrayEnemigos = Physics.OverlapSphere(transform.position, 40f, LayerMaskObjAApuntar);
 
@@ -180,7 +197,7 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(inputTeclas["apuntar"]))
         {
             
             float hor = Input.GetAxis("Horizontal");
@@ -192,7 +209,7 @@ public class PlayerController : MonoBehaviour
             anim.SetFloat("movimientoApuntandoEjeY", ver, 0.1f, Time.deltaTime);
             anim.SetFloat("movimientoApuntandoEjeX", hor, 0.1f, Time.deltaTime);
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(inputTeclas["cambiarObjD"]))
             {
                 objAApuntar++;
                 
@@ -202,7 +219,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(inputTeclas["cambiarObjI"]))
             {
                 objAApuntar--;
                 
