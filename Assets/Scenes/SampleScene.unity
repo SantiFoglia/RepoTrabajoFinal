@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &10456375 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 342511478, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
-  m_PrefabInstance: {fileID: 5627274728074946856}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &79474521
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,23 +784,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &655206279 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4817005922694160568, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
-  m_PrefabInstance: {fileID: 5627274728074946856}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &655206287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655206279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc565e762997e234cbac2af235b260a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &658986219 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1043055886918656, guid: 305ee2928e730a14287c68989f8d4dba, type: 3}
@@ -3938,46 +3916,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1706011705, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
-      propertyPath: m_Size.y
-      value: 1.704226
+    - target: {fileID: 1706011706, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
+      propertyPath: m_Constraints
+      value: 122
       objectReference: {fileID: 0}
-    - target: {fileID: 1706011705, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
-      propertyPath: m_Center.x
-      value: -0.0048249955
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706011705, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
-      propertyPath: m_Center.y
-      value: 0.8736193
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706011705, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
-      propertyPath: m_Center.z
-      value: 3.872226e-11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706011707, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
-      propertyPath: asd
-      value: 
-      objectReference: {fileID: 10456375}
     - target: {fileID: 1706011707, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
       propertyPath: menuPausa
       value: 
       objectReference: {fileID: 316112205}
-    - target: {fileID: 1706011707, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
-      propertyPath: velocidad
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706011707, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
-      propertyPath: distanciaPiso
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706011707, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
-      propertyPath: velocidadSaltando
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1706011707, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
-      propertyPath: LayerMaskObjAApuntar.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
     - target: {fileID: 4817005922694160568, guid: 40f7439d09107214e84c7513e9a8a671, type: 3}
       propertyPath: m_Name
       value: Player

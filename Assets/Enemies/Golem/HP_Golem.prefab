@@ -527,12 +527,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875c8f5fa38ad9846897f0e4211d70e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangoAtaqueCerca: 4
+  vida: 0
+  nombre: Golem
+  velocidad: 0
+  velocidadDeRotacion: 0
+  rangoAtaqueBasico: 5
   estaRangoCerca: 0
-  rangoAtaqueADistancia: 10
+  rangoAtaqueEspecial: 30
+  rangoVision: 100
+  anim: {fileID: 0}
+  layerJugador:
+    serializedVersion: 2
+    m_Bits: 128
+  _jugador: {fileID: 0}
+  jugadorCerca: 0
   prefabRoca: {fileID: 1260152368072798, guid: 4bf449b1b6e781140a548b42020600f6, type: 3}
-  spawnRoca: {fileID: 0}
-  puntoMiraRay: {fileID: 0}
+  spawnRoca: {fileID: 7508326080811506263}
+  puntoMiraRay: {fileID: 5542946429801806068}
   cooldawnLanzaRoca: 6
 --- !u!65 &4846353110336421513
 BoxCollider:
