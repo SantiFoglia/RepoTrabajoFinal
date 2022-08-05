@@ -52,11 +52,14 @@ public class PlayerController : MonoBehaviour
     public int objAApuntar = 0;
 
     //costosStamina
-
     float costoDisparar = 10f;
     float costoCorrer = 0.01f;
     float costoRollear = 20f;
     float costoSaltar = 20f;
+
+    //pausar
+    private bool pausaActivada;
+    public GameObject menuPausa;
 
 
     private void Start()
@@ -85,6 +88,7 @@ public class PlayerController : MonoBehaviour
 
         Apuntar();
 
+        TogglePause();
         
     }
 
@@ -99,6 +103,7 @@ public class PlayerController : MonoBehaviour
         inputTeclas.Add("apuntar", KeyCode.Mouse1);
         inputTeclas.Add("cambiarObjD", KeyCode.E);
         inputTeclas.Add("cambiarObjI", KeyCode.Q);
+        inputTeclas.Add("pausa", KeyCode.Escape);
     }
 
     void DetectarPiso()
@@ -276,6 +281,24 @@ public class PlayerController : MonoBehaviour
             velocidad += 3;
 
             objAApuntar = 0;
+        }
+    }
+    public void TogglePause()
+    {
+        if (Input.GetKeyDown(inputTeclas["pausa"]))
+        {
+            if (pausaActivada)
+            {
+                menuPausa.SetActive(false);
+                Time.timeScale = 1;
+                pausaActivada = false;
+            }
+            else
+            {
+                menuPausa.SetActive(true);
+                Time.timeScale = 0;
+                pausaActivada = true;
+            }
         }
     }
 

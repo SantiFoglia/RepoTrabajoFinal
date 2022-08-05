@@ -11,6 +11,7 @@ public class UIJuego : MonoBehaviour
     public Image barraMana;
     public Image barraStamina;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,6 @@ public class UIJuego : MonoBehaviour
     {
         barraVida.fillAmount = Jugador.vida / Jugador.vidaMax;
     }
-
     private void ActualizarMana()
     {
         barraMana.fillAmount = Jugador.mana / Jugador.manaMax;
@@ -38,7 +38,6 @@ public class UIJuego : MonoBehaviour
     {
         barraStamina.fillAmount = Jugador.stamina / Jugador.staminaMax;
     }
-
     void ActualizarMonedas()
     {
         if (Jugador.monedas<999999)
