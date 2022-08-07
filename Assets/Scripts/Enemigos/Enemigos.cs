@@ -7,15 +7,19 @@ public class Enemigos : MonoBehaviour
     public int vida;
     public string nombre;
     public float velocidad;
-    public float velocidadDeRotacion;
+    public float rangoVision;
 
     public float rangoAtaqueBasico;
     public bool estaRangoCerca;
     public float rangoAtaqueEspecial;
-    public float rangoVision;
+    public bool estaAtacando;
+
     public Animator anim;
     public LayerMask layerJugador;
     public GameObject _jugador;
+
+    public BoxCollider campoVision;
+    public bool jugadorEnCampoVision;
 
 
     public bool jugadorCerca;
@@ -24,7 +28,6 @@ public class Enemigos : MonoBehaviour
     {
 
     }
-
     virtual public void AtaqueEspecial()
     {
 
@@ -33,21 +36,17 @@ public class Enemigos : MonoBehaviour
     {
         jugadorCerca = Physics.CheckSphere(gameObject.transform.position, rangoVision, layerJugador);
     }
-
     virtual public void mirarJugador()
     {
         Quaternion newRotation = Quaternion.LookRotation(_jugador.transform.position - transform.position);
         newRotation.x = 0;
         newRotation.z = 0;
         transform.rotation = newRotation;
-        //transform.LookAt(_jugador.transform.position);
-        //transform.Rotate(new Vector3(0, 90, 0), Space.Self);
     }
     virtual public void seguirJugador()
     {
-        transform.Translate(new Vector3(0,0,1 * Time.deltaTime));
+        transform.Translate(Vector3.forward *Time.deltaTime * velocidad);
     }
-
     virtual public void Morir()
     {
         if (vida < 0)

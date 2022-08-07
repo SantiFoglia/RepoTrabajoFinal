@@ -13,21 +13,21 @@ public class Golem : Enemigos
     public float cooldawnLanzaRoca;
     float tiempoParaLanzarRoca;
 
-    
-
-    // Start is called before the first frame update
     void Start()
     {
         vida = 100;
         nombre = "Golem";
-        velocidad = 3;
-        rangoVision = 100f;
+        velocidad = 2;
+        rangoVision = 50f;
+        rangoAtaqueBasico = 3f;
         anim = GetComponent<Animator>();
+        _jugador = GameObject.FindGameObjectWithTag("Player");
 
         TemporizadorLanzarRoca();
         spawnRoca = GetComponent<Transform>().Find("spawnRoca");
         puntoMiraRay = GetComponent<Transform>().Find("puntoMiraRay");
-        _jugador = GameObject.FindGameObjectWithTag("Player");
+
+        
     }
 
     // Update is called once per frame
@@ -43,18 +43,13 @@ public class Golem : Enemigos
 
     override public void AtaqueEspecial()
     {
-        RaycastHit ray;
-
-        if (Physics.Raycast(puntoMiraRay.transform.position, Vector3.forward, out ray, rangoAtaqueEspecial))
+        if (jugadorCerca && tiempoParaLanzarRoca <= 0 && !estaRangoCerca)
         {
-            if (ray.transform.tag == "Player" && tiempoParaLanzarRoca <= 0 && !estaRangoCerca)
-            {
-                anim.SetTrigger("Attack01");
+            anim.SetTrigger("Attack01");
 
-                tiempoParaLanzarRoca = cooldawnLanzaRoca;
+            tiempoParaLanzarRoca = cooldawnLanzaRoca;
 
-                StartCoroutine(tiempoAnimacionLanzarRoca());
-            }
+            StartCoroutine(tiempoAnimacionLanzarRoca());
         }
     }
     override public void AtaqueBasico()
@@ -63,9 +58,10 @@ public class Golem : Enemigos
 
         if (Physics.Raycast(puntoMiraRay.transform.position, Vector3.forward, out ray, rangoAtaqueBasico))
         {
-            estaRangoCerca = true;
+            
             if (ray.transform.tag == "Player")
             {
+                estaRangoCerca = true;
                 anim.SetTrigger("Attack02");
                 
             }
@@ -85,11 +81,24 @@ public class Golem : Enemigos
     }
     public override void mirarJugador()
     {
-        base.mirarJugador();
+        if (jugadorCerca)
+        {
+            base.mirarJugador();
+        }
+        
     }
     public override void seguirJugador()
     {
-        base.seguirJugador();
+        if (jugadorCerca && !estaAtacando)
+        {
+            base.seguirJugador();
+            anim.SetBool("estaCaminando", true);
+        }
+        else
+        {
+            anim.SetBool("estaCaminando", false);
+        }
+        
     }
     public override void Morir()
     {
@@ -98,9 +107,12 @@ public class Golem : Enemigos
 
     IEnumerator tiempoAnimacionLanzarRoca()
     {
+        
+        estaAtacando = true;
         yield return new WaitForSeconds(1.6f);
 
         Roca = Instantiate(prefabRoca, spawnRoca.transform.position, spawnRoca.transform.rotation);
         Roca.GetComponent<Rigidbody>().AddForce(spawnRoca.forward * 40, ForceMode.Impulse);
+        estaAtacando = false;
     }
 }
