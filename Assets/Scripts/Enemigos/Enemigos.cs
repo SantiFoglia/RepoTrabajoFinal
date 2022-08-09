@@ -32,7 +32,7 @@ public class Enemigos : MonoBehaviour
     {
 
     }
-    virtual public void DetectarJugador()
+    virtual public void detectarJugador()
     {
         jugadorCerca = Physics.CheckSphere(gameObject.transform.position, rangoVision, layerJugador);
     }

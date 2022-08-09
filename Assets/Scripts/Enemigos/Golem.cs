@@ -36,7 +36,7 @@ public class Golem : Enemigos
         AtaqueBasico();
         AtaqueEspecial();
         TemporizadorLanzarRoca();
-        DetectarJugador();
+        detectarJugador();
         mirarJugador();
         seguirJugador();
     }
@@ -75,9 +75,9 @@ public class Golem : Enemigos
     {
         tiempoParaLanzarRoca -= Time.deltaTime;
     }
-    public override void DetectarJugador()
+    public override void detectarJugador()
     {
-        base.DetectarJugador();
+        base.detectarJugador();
     }
     public override void mirarJugador()
     {
