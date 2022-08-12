@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Flecha : MonoBehaviour
 {
-    public int daño = 10;
+    static public int daño = 10;
     Rigidbody rb;
     Quaternion rotar;
     public float potenciaFinal;

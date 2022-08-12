@@ -134,6 +134,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(inputTeclas["rollear"]) && tocaPiso && Jugador.stamina>costoRollear)
         {
             StartCoroutine(tiempoAnimacionRoll());
+            Jugador.jugadorInvulnerable = true;
             _boxCollider.enabled = false;
             estaRolleando = true;
             puedeAtacar = false;
@@ -317,6 +318,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator tiempoAnimacionRoll()
     {
         yield return new WaitForSeconds(1.0f);
+        Jugador.jugadorInvulnerable = false;
         estaRolleando = false;
         _boxCollider.enabled = true;
 

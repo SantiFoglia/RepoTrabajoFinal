@@ -8,7 +8,7 @@ public class Enemigos : MonoBehaviour
     public string nombre;
     public float velocidad;
     public float rangoVision;
-    public int dañoContacto;
+    static public int dañoContacto;
 
     public float rangoAtaqueBasico;
     public bool estaRangoCerca;
@@ -22,16 +22,11 @@ public class Enemigos : MonoBehaviour
     public BoxCollider campoVision;
     public bool jugadorEnCampoVision;
 
+    public bool enemigoInvulnerable;
 
     public bool jugadorCerca;
 
     static public bool enemigoMuriendo;
-
-    private void Update()
-    {
-        
-        
-    }
 
     virtual public void AtaqueBasico()
     {
@@ -56,16 +51,22 @@ public class Enemigos : MonoBehaviour
     {
         transform.Translate(Vector3.forward *Time.deltaTime * velocidad);
     }
-    virtual public void Morir()
-    {
-        if (vida < 0)
-        {
-            GameObject.Destroy(this);
-            //anim.SetBool(estaMuriendo,true);
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Flecha") && !enemigoInvulnerable)
+        {
+            vida -= Flecha.daño;
+            enemigoInvulnerable = true;
+            StartCoroutine(tiempoInvulnerable());
         }
-        
+
     }
 
+    IEnumerator tiempoInvulnerable()
+    {
+        yield return new WaitForSeconds(0.4f);
+        enemigoInvulnerable = false;
+    }
 
 }

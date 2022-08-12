@@ -17,6 +17,8 @@ public class Jugador : MonoBehaviour
     public static float stamina;
     public static float staminaMax;
 
+    static public bool jugadorInvulnerable;
+
     public static int monedas;
 
     private void Awake()
@@ -68,5 +70,26 @@ public class Jugador : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         Enemigos.enemigoMuriendo = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Roca") && !jugadorInvulnerable)
+        {
+            jugadorInvulnerable = true;
+            StartCoroutine(tiempoInvulnerable());
+        }
+        if (other.CompareTag("Enemy") && !jugadorInvulnerable)
+        {
+            vida -= Enemigos.dañoContacto;
+            jugadorInvulnerable = true;
+            StartCoroutine(tiempoInvulnerable());
+        }
+    }
+
+    IEnumerator tiempoInvulnerable()
+    {
+        yield return new WaitForSeconds(0.4f);
+        jugadorInvulnerable = false;
     }
 }

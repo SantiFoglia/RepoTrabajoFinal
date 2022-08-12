@@ -38,11 +38,11 @@ public class CamaraController : MonoBehaviour
 
         int objetivo = _playerController.objAApuntar;
 
-        if (_playerController.estaApuntando)
+        if (_playerController.estaApuntando && !Enemigos.enemigoMuriendo)
         {
             for (int i = 0; i < _playerController.arrayEnemigos.Length; i++)
             {
-                if (_playerController.arrayEnemigos[i].CompareTag("Enemy"))
+                if (_playerController.arrayEnemigos[i].CompareTag("Enemy") && !Enemigos.enemigoMuriendo)
                 {
                     
                     transform.LookAt(_playerController.arrayEnemigos[objetivo].transform);

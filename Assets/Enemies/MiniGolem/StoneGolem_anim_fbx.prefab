@@ -865,6 +865,7 @@ GameObject:
   - component: {fileID: -468306179874496636}
   - component: {fileID: 5487151775643356012}
   - component: {fileID: 3753843647666233274}
+  - component: {fileID: 1490603912304412887}
   - component: {fileID: -3870488224609838580}
   m_Layer: 6
   m_Name: StoneGolem_anim_fbx
@@ -939,6 +940,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.07397232, y: 0.081461035, z: 0.031749733}
   m_Center: {x: -0.00013999939, y: 0.03944319, z: 0.0059596985}
+--- !u!65 &1490603912304412887
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5580085534277905204}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07397232, y: 0.081461035, z: 0.031749733}
+  m_Center: {x: -0.00013999939, y: 0.03944319, z: 0.0059596985}
 --- !u!114 &-3870488224609838580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,6 +980,7 @@ MonoBehaviour:
   _jugador: {fileID: 0}
   campoVision: {fileID: 0}
   jugadorEnCampoVision: 0
+  enemigoInvulnerable: 0
   jugadorCerca: 0
 --- !u!1 &5698055142639333980
 GameObject:

@@ -24,6 +24,12 @@ public class MiniGolem : Enemigos
         mirarJugador();
         seguirJugador();
         AtaqueBasico();
+
+        if (vida <= 0)
+        {
+            enemigoMuriendo = true;
+            Destroy(gameObject);
+        }
     }
 
     public override void detectarJugador()
@@ -51,10 +57,6 @@ public class MiniGolem : Enemigos
             anim.SetBool("estaCaminando", false);
         }
 
-    }
-    public override void Morir()
-    {
-        base.Morir();
     }
 
     override public void AtaqueBasico()

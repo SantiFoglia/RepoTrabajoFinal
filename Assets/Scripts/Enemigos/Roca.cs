@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Roca : MonoBehaviour
 {
+    int daño = 10;
+
     void Start()
     {
         Destroy(gameObject, 2f);
@@ -11,9 +13,9 @@ public class Roca : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !Jugador.jugadorInvulnerable)
         {
-            Jugador.vida -= 10;
+            Jugador.vida -= daño;
             print("Pega");
         }
     }

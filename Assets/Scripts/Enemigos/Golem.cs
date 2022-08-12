@@ -40,6 +40,12 @@ public class Golem : Enemigos
         detectarJugador();
         mirarJugador();
         seguirJugador();
+
+        if(vida <= 0)
+        {
+            enemigoMuriendo = true;
+            Destroy(gameObject);
+        }
     }
 
     override public void AtaqueEspecial()
@@ -100,19 +106,6 @@ public class Golem : Enemigos
             anim.SetBool("estaCaminando", false);
         }
         
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Jugador.vida -= dañoContacto;
-        }
-    }
-
-    public override void Morir()
-    {
-        base.Morir();
     }
 
     IEnumerator tiempoAnimacionLanzarRoca()

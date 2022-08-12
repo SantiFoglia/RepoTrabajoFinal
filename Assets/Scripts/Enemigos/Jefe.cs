@@ -9,16 +9,10 @@ public class Jefe : Enemigos
 
     void Start()
     {
-        vida = 1;
+        vida = 50;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Flecha"))
-        {
-            vida -= 1;
-        }
-    }
+    
 
     private void Update()
     {
@@ -28,5 +22,8 @@ public class Jefe : Enemigos
             enemigoMuriendo = true;
             Destroy(gameObject);
         }
+
     }
+
+    
 }
