@@ -8,6 +8,7 @@ public class Enemigos : MonoBehaviour
     public string nombre;
     public float velocidad;
     public float rangoVision;
+    public int dañoContacto;
 
     public float rangoAtaqueBasico;
     public bool estaRangoCerca;
@@ -56,4 +57,6 @@ public class Enemigos : MonoBehaviour
         }
         
     }
+
+    
 }

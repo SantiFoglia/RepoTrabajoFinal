@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Jugador : MonoBehaviour
 {
     PlayerController _jugador;
+    Rigidbody rb;
+
+    [SerializeField] private UnityEvent PlayerDeath;
 
     public static float vida;
     public static float vidaMax;
@@ -18,6 +22,7 @@ public class Jugador : MonoBehaviour
     private void Awake()
     {
         _jugador = GetComponent<PlayerController>();
+        rb = GetComponent<Rigidbody>();
 
         vidaMax = 100f;
         vida = vidaMax;
@@ -32,6 +37,11 @@ public class Jugador : MonoBehaviour
     private void Update()
     {
         regenerarStamina();
+
+        if (vida <=0)
+        {
+            PlayerDeath?.Invoke();
+        }
     }
 
     void regenerarStamina()
@@ -40,5 +50,9 @@ public class Jugador : MonoBehaviour
         {
             stamina += 0.02f;
         }
+    }
+    public void retrocesoGolpe()
+    {
+        
     }
 }

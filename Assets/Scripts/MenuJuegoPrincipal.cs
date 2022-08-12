@@ -10,6 +10,11 @@ public class MenuJuegoPrincipal : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void VolverMenuPrincipal()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void Salir()
     {
         Application.Quit();

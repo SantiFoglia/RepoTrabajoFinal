@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 95433748489988412}
   - component: {fileID: 1165446946875584405}
   - component: {fileID: 2539810528916631005}
+  - component: {fileID: -8683463153641790413}
   m_Layer: 0
   m_Name: HP_Rock
   m_TagString: Untagged
@@ -134,3 +135,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &-8683463153641790413
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260152368072798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 80
+  m_Center: {x: 0, y: 0, z: 0}

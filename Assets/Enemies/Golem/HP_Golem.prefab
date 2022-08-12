@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 1335724672972488979}
   - component: {fileID: 1430755215841905277}
   - component: {fileID: 4846353110336421513}
+  - component: {fileID: 1977737364676231857}
   - component: {fileID: 6499316559093264643}
   - component: {fileID: 4114364681302644802}
   m_Layer: 6
@@ -531,11 +532,12 @@ MonoBehaviour:
   vida: 0
   nombre: Golem
   velocidad: 0
-  velocidadDeRotacion: 0
+  rangoVision: 100
+  "da\xF1oContacto": 0
   rangoAtaqueBasico: 5
   estaRangoCerca: 0
   rangoAtaqueEspecial: 30
-  rangoVision: 100
+  estaAtacando: 0
   anim: {fileID: 0}
   layerJugador:
     serializedVersion: 2
@@ -549,6 +551,19 @@ MonoBehaviour:
   puntoMiraRay: {fileID: 5542946429801806068}
   cooldawnLanzaRoca: 6
 --- !u!65 &4846353110336421513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431595251377721449}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.829193, y: 3.8915327, z: 2.3070717}
+  m_Center: {x: 0.10108948, y: 1.9079708, z: 0.2711773}
+--- !u!65 &1977737364676231857
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

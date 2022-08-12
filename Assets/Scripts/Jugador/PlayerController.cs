@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
+
     void CrearinputTeclas()
     {
         inputTeclas = new Dictionary<string, KeyCode>();
@@ -292,12 +293,14 @@ public class PlayerController : MonoBehaviour
                 menuPausa.SetActive(false);
                 Time.timeScale = 1;
                 pausaActivada = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
             else
             {
                 menuPausa.SetActive(true);
                 Time.timeScale = 0;
                 pausaActivada = true;
+                Cursor.lockState = CursorLockMode.Confined;
             }
         }
     }

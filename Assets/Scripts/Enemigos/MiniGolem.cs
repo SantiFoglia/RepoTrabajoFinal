@@ -12,6 +12,7 @@ public class MiniGolem : Enemigos
         velocidad = 2;
         rangoVision = 30f;
         rangoAtaqueBasico = 1f;
+        dañoContacto = 5;
         anim = GetComponent<Animator>();
         _jugador = GameObject.FindGameObjectWithTag("Player");
     }
@@ -58,23 +59,6 @@ public class MiniGolem : Enemigos
 
     override public void AtaqueBasico()
     {
-        //RaycastHit ray;
-
-        //if (Physics.Raycast(gameObject.transform.position, Vector3.forward, out ray, rangoAtaqueBasico))
-        //{
-
-        //    if (ray.transform.tag == "Player")
-        //    {
-        //        estaRangoCerca = true;
-        //        anim.SetTrigger("estaAtacando");
-
-        //    }
-        //}
-        //else
-        //{
-        //    estaRangoCerca = false;
-        //}
-
         if (estaRangoCerca)
         {
             anim.SetTrigger("estaAtacando");

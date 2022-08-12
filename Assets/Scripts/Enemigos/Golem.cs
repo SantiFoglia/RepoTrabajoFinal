@@ -20,6 +20,7 @@ public class Golem : Enemigos
         velocidad = 2;
         rangoVision = 50f;
         rangoAtaqueBasico = 3f;
+        dañoContacto = 10;
         anim = GetComponent<Animator>();
         _jugador = GameObject.FindGameObjectWithTag("Player");
 
@@ -100,6 +101,15 @@ public class Golem : Enemigos
         }
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Jugador.vida -= dañoContacto;
+        }
+    }
+
     public override void Morir()
     {
         base.Morir();

@@ -12,7 +12,7 @@ public class Flecha : MonoBehaviour
 
     private void Start()
     {
-        rotar = Quaternion.Euler(90, 0, 0);
+        rotar = Quaternion.Euler(10, 0, 0);
         Destroy(gameObject, 3f);
     }
 
