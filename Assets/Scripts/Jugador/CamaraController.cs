@@ -46,7 +46,7 @@ public class CamaraController : MonoBehaviour
                 {
                     
                     transform.LookAt(_playerController.arrayEnemigos[objetivo].transform);
-                    if (!_playerController.estaRolleando)
+                    if (!_playerController.estaRolleando && !Enemigos.enemigoMuriendo)
                     {
                         _playerController.gameObject.transform.LookAt(_playerController.arrayEnemigos[objetivo].transform);
                     }

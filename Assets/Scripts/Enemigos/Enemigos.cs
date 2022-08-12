@@ -25,6 +25,14 @@ public class Enemigos : MonoBehaviour
 
     public bool jugadorCerca;
 
+    static public bool enemigoMuriendo;
+
+    private void Update()
+    {
+        
+        
+    }
+
     virtual public void AtaqueBasico()
     {
 
@@ -52,11 +60,12 @@ public class Enemigos : MonoBehaviour
     {
         if (vida < 0)
         {
-            GameObject.Destroy(this, 3f);
+            GameObject.Destroy(this);
             //anim.SetBool(estaMuriendo,true);
+
         }
         
     }
 
-    
+
 }

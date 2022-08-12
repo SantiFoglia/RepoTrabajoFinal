@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Arco
   - Enemy
+  - Flecha
   layers:
   - Default
   - TransparentFX

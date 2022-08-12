@@ -14,7 +14,7 @@ public class Jefe : Enemigos
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Flecha"))
         {
             vida -= 1;
         }
@@ -25,6 +25,7 @@ public class Jefe : Enemigos
         if (vida <=0)
         {
             MuerteJefe.Invoke();
+            enemigoMuriendo = true;
             Destroy(gameObject);
         }
     }

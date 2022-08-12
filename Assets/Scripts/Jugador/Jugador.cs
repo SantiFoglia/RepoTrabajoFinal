@@ -37,6 +37,7 @@ public class Jugador : MonoBehaviour
     private void Update()
     {
         regenerarStamina();
+        ReiniciarApuntar();
 
         if (vida <=0)
         {
@@ -54,5 +55,18 @@ public class Jugador : MonoBehaviour
     public void retrocesoGolpe()
     {
         
+    }
+    public void ReiniciarApuntar()
+    {
+        if (Enemigos.enemigoMuriendo)
+        {
+            StartCoroutine(delayMuerteEnemigo());
+        }
+    }
+
+    IEnumerator delayMuerteEnemigo()
+    {
+        yield return new WaitForSeconds(1f);
+        Enemigos.enemigoMuriendo = false;
     }
 }

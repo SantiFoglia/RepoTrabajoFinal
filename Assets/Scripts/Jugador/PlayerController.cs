@@ -226,7 +226,7 @@ public class PlayerController : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(inputTeclas["apuntar"]))
+        if (Input.GetKeyDown(inputTeclas["apuntar"]) && !Enemigos.enemigoMuriendo)
         {
             arrayEnemigos = Physics.OverlapSphere(transform.position, 40f, LayerMaskObjAApuntar);
 
@@ -235,7 +235,7 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if (Input.GetKey(inputTeclas["apuntar"]))
+        if (Input.GetKey(inputTeclas["apuntar"]) && !Enemigos.enemigoMuriendo)
         {
             
             float hor = Input.GetAxis("Horizontal");
@@ -275,7 +275,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("apuntando", false);
         }
 
-        if (Input.GetKeyUp(inputTeclas["apuntar"]))
+        if (Input.GetKeyUp(inputTeclas["apuntar"]) && !Enemigos.enemigoMuriendo)
         {
             arrayEnemigos = Physics.OverlapSphere(transform.position, 40f, LayerMaskObjAApuntar);
 
