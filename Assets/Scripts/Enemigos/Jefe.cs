@@ -9,13 +9,22 @@ public class Jefe : Enemigos
 
     void Start()
     {
-        vida = 50;
+        vida = 30;
+        nombre = "Jefe";
+        velocidad = 3;
+        rangoVision = 100f;
+        rangoAtaqueBasico = 3f;
+        dañoContacto = 10;
+        anim = GetComponent<Animator>();
+        _jugador = GameObject.FindGameObjectWithTag("Player");
     }
-
-    
 
     private void Update()
     {
+        detectarJugador();
+        mirarJugador();
+        seguirJugador();
+
         if (vida <=0)
         {
             MuerteJefe.Invoke();
@@ -25,5 +34,29 @@ public class Jefe : Enemigos
 
     }
 
-    
+    public override void detectarJugador()
+    {
+        base.detectarJugador();
+    }
+    public override void mirarJugador()
+    {
+        if (jugadorCerca)
+        {
+            base.mirarJugador();
+        }
+
+    }
+    public override void seguirJugador()
+    {
+        if (jugadorCerca /*&& !estaAtacando*/)
+        {
+            base.seguirJugador();
+            anim.SetFloat("Movimiento", 1f, 0.1f, Time.deltaTime);
+        }
+        else
+        {
+            anim.SetFloat("Movimiento", 0f, 0.1f, Time.deltaTime);
+        }
+
+    }
 }
