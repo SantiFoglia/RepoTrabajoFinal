@@ -18,15 +18,17 @@ public class Golem : Enemigos
         vida = 100;
         nombre = "Golem";
         velocidad = 2;
-        rangoVision = 50f;
+        rangoVision = 100f;
         rangoAtaqueBasico = 3f;
         dañoContacto = 10;
         anim = GetComponent<Animator>();
         _jugador = GameObject.FindGameObjectWithTag("Player");
 
-        TemporizadorLanzarRoca();
         spawnRoca = GetComponent<Transform>().Find("spawnRoca");
         puntoMiraRay = GetComponent<Transform>().Find("puntoMiraRay");
+
+        TemporizadorLanzarRoca();
+        
 
         
     }
