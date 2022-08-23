@@ -9,10 +9,13 @@ public class Jefe : Enemigos
 
     public List<Transform> spawnsRocas;
     public List<Transform> spawnsGolems;
+    public Transform spawnPelota;
     public GameObject prefabRoca;
     public GameObject prefabGolem;
+    public GameObject prefabPelota;
     GameObject Roca;
 
+    int vidaMax;
     int fase = 1;
 
     //cooldawns
@@ -26,6 +29,7 @@ public class Jefe : Enemigos
     void Start()
     {
         vida = 100;
+        vidaMax = vida;
         nombre = "Jefe";
         velocidad = 3;
         rangoVision = 100f;
@@ -34,7 +38,7 @@ public class Jefe : Enemigos
         anim = GetComponent<Animator>();
         _jugador = GameObject.FindGameObjectWithTag("Player");
 
-        TemporizadorLanzarRoca();
+        Temporizador();
     }
 
     private void Update()
@@ -42,7 +46,7 @@ public class Jefe : Enemigos
         detectarJugador();
         mirarJugador();
         seguirJugador();
-        TemporizadorLanzarRoca();
+        Temporizador();
         AtaqueBasico();
         InvocarGolems();
         AtaqueEspecial();
@@ -84,10 +88,11 @@ public class Jefe : Enemigos
         }
 
     }
-    void TemporizadorLanzarRoca()
+    void Temporizador()
     {
         tiempoParaLanzarRoca -= Time.deltaTime;
         tiempoParaInvocarGolems -= Time.deltaTime;
+        tiempoParaLanzarPelota -= Time.deltaTime;
     }
     
     public override void AtaqueBasico()
@@ -114,11 +119,18 @@ public class Jefe : Enemigos
     }
     public override void AtaqueEspecial()
     {
+        if (jugadorCerca && tiempoParaLanzarPelota <= 0 && !estaRangoCerca && !estaAtacando && fase ==2)
+        {
+            anim.SetTrigger("InvocarPelota");
 
+            tiempoParaLanzarPelota = cooldawnLanzaPelota;
+
+            StartCoroutine(tiempoAnimacionLanzarPelota());
+        }
     }
     void CambioFase()
     {
-        if (fase == 1 && vida <=50)
+        if (fase == 1 && (vidaMax/vida) >= 2)
         {
             fase = 2;
             velocidad = 0;
@@ -147,7 +159,9 @@ public class Jefe : Enemigos
     {
 
         estaAtacando = true;
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(3f);
+
+        Instantiate(prefabPelota, spawnPelota.transform.position, spawnPelota.transform.rotation);
 
 
         estaAtacando = false;
@@ -174,6 +188,9 @@ public class Jefe : Enemigos
         velocidad = 5f;
         cooldawnLanzaRoca = 3f;
         cooldawnInvocarGolems = 30f;
+        tiempoParaLanzarRoca = cooldawnLanzaRoca;
+        tiempoParaInvocarGolems = cooldawnInvocarGolems;
+        tiempoParaLanzarPelota = 5f;
     }
 
 

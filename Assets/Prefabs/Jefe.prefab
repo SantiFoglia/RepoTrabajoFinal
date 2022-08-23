@@ -2315,10 +2315,11 @@ MonoBehaviour:
   - {fileID: 7446432118727540737}
   - {fileID: 7413168557511707091}
   - {fileID: 5908482528876160115}
-  prefabRoca: {fileID: 0}
-  cooldawnLanzaRoca: 0
+  prefabRoca: {fileID: 1260152368072798, guid: 4bf449b1b6e781140a548b42020600f6, type: 3}
+  prefabGolem: {fileID: 1431595251377721449, guid: 3f094f59e43e3e844b7e6ac07777b10a, type: 3}
+  cooldawnLanzaRoca: 5
   cooldawnLanzaPelota: 0
-  cooldawnInvocarGolems: 0
+  cooldawnInvocarGolems: 60
 --- !u!95 &580121020
 Animator:
   serializedVersion: 4

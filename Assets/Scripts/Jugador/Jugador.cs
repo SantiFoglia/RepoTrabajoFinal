@@ -51,7 +51,7 @@ public class Jugador : MonoBehaviour
     {
         if (stamina < 100 && !_jugador.estaCorriendo && !_jugador.estaRolleando && _jugador.detectaPiso && !_jugador.estaAtacando && !_jugador.estaSaltando)
         {
-            stamina += 0.02f;
+            stamina += 0.04f;
         }
     }
     public void retrocesoGolpe()

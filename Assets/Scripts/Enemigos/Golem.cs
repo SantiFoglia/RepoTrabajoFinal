@@ -15,7 +15,7 @@ public class Golem : Enemigos
 
     void Start()
     {
-        vida = 100;
+        vida = 50;
         nombre = "Golem";
         velocidad = 2;
         rangoVision = 100f;
