@@ -1200,7 +1200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &63232433
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -38463,7 +38463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3093248535618283137, guid: d2978f7296e38054eafb23121f034046, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10
+      value: 9.06
       objectReference: {fileID: 0}
     - target: {fileID: 3093248535618283137, guid: d2978f7296e38054eafb23121f034046, type: 3}
       propertyPath: m_LocalPosition.z
@@ -38503,7 +38503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3093248535618283141, guid: d2978f7296e38054eafb23121f034046, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
