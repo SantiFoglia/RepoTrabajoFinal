@@ -15,6 +15,14 @@ public class Jefe : Enemigos
     public GameObject prefabPelota;
     GameObject Roca;
 
+    public ParticleSystem Lluvia;
+    public ParticleSystem Rayos;
+
+    public Material Tormenta;
+    public Material Cielo;
+
+    public Light luz;
+
     int vidaMax;
     int fase = 1;
 
@@ -51,14 +59,22 @@ public class Jefe : Enemigos
         InvocarGolems();
         AtaqueEspecial();
         CambioFase();
-        
-        
+
+        if (fase==2)
+        {
+            OscurecerEscenario();
+            RenderSettings.skybox = Tormenta;
+        }
 
         if (vida <=0)
         {
             MuerteJefe.Invoke();
             enemigoMuriendo = true;
             Destroy(gameObject);
+            RenderSettings.skybox = Cielo;
+            Lluvia.Stop();
+            Rayos.Stop();
+            EsclarecerEscenario();
         }
 
     }
@@ -135,8 +151,23 @@ public class Jefe : Enemigos
             fase = 2;
             velocidad = 0;
             anim.SetTrigger("CambiarFase");
-            
+
             StartCoroutine(tiempoAnimacionCambiarFase());
+        }
+    }
+    void OscurecerEscenario()
+    {
+        if (luz.intensity >= 0.4f)
+        {
+            luz.intensity -= Time.deltaTime/3;
+        }
+        
+    }
+    void EsclarecerEscenario()
+    {
+        if (luz.intensity <= 1f)
+        {
+            luz.intensity += Time.deltaTime / 3;
         }
     }
     IEnumerator tiempoAnimacionLanzarRoca()
@@ -191,6 +222,10 @@ public class Jefe : Enemigos
         tiempoParaLanzarRoca = cooldawnLanzaRoca;
         tiempoParaInvocarGolems = cooldawnInvocarGolems;
         tiempoParaLanzarPelota = 5f;
+
+        Lluvia.Play();
+        Rayos.Play();
+        
     }
 
 

@@ -12,8 +12,8 @@ public class Esfera : Enemigos
     // Start is called before the first frame update
     void Start()
     {
-        //velocidad = 8f;
-        //Destroy(gameObject, 10f);
+        velocidad = 8f;
+        Destroy(gameObject, 10f);
         _jugador = GameObject.FindGameObjectWithTag("Player");
         //_ColorGrading.colorGradingLayer = null;
         volumen.profile.TryGetSettings(out _ColorGrading);

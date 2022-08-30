@@ -16,10 +16,14 @@ public class ManagerSonido : MonoBehaviour
             DontDestroyOnLoad(gameObject);
 
             _audioSource = GetComponent<AudioSource>();
+            
         }
         else
         {
             Destroy(gameObject);
         }
+
+       
     }
+
 }
