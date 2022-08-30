@@ -17,11 +17,13 @@ public class Jefe : Enemigos
 
     public ParticleSystem Lluvia;
     public ParticleSystem Rayos;
+    public ParticleSystem Aura;
 
     public Material Tormenta;
     public Material Cielo;
 
     public Light luz;
+    public Light luzRoja;
 
     int vidaMax;
     int fase = 1;
@@ -63,6 +65,7 @@ public class Jefe : Enemigos
         if (fase==2)
         {
             OscurecerEscenario();
+            AumentarTamaño();
             RenderSettings.skybox = Tormenta;
         }
 
@@ -170,6 +173,14 @@ public class Jefe : Enemigos
             luz.intensity += Time.deltaTime / 3;
         }
     }
+    void AumentarTamaño()
+    {
+        if (transform.localScale.x <= 4f)
+        {
+            transform.localScale += new Vector3(Time.deltaTime/5, Time.deltaTime/5, Time.deltaTime/5);
+        }
+        
+    }
     IEnumerator tiempoAnimacionLanzarRoca()
     {
 
@@ -225,6 +236,8 @@ public class Jefe : Enemigos
 
         Lluvia.Play();
         Rayos.Play();
+        Aura.Play();
+        luzRoja.enabled = true;
         
     }
 
