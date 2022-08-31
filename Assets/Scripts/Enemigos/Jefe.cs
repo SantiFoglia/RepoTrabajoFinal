@@ -22,6 +22,10 @@ public class Jefe : Enemigos
     public Material Tormenta;
     public Material Cielo;
 
+    public AudioClip musicaTormenta;
+    public AudioClip musicaTormenta2;
+    public AudioClip musicaVictoria;
+
     public Light luz;
     public Light luzRoja;
 
@@ -73,11 +77,17 @@ public class Jefe : Enemigos
         {
             MuerteJefe.Invoke();
             enemigoMuriendo = true;
-            Destroy(gameObject);
             RenderSettings.skybox = Cielo;
             Lluvia.Stop();
             Rayos.Stop();
             EsclarecerEscenario();
+            anim.SetTrigger("Morir");
+
+            ManagerSonido.unicaInstancia.musica1.volume -= Time.deltaTime/15;
+            ManagerSonido.unicaInstancia.musica2.volume -= Time.deltaTime/20;
+            ManagerSonido.unicaInstancia.musica3.volume -= Time.deltaTime/20;
+
+            StartCoroutine(tiempoAnimacionMuerte());
         }
 
     }
@@ -154,6 +164,9 @@ public class Jefe : Enemigos
             fase = 2;
             velocidad = 0;
             anim.SetTrigger("CambiarFase");
+
+            ManagerSonido.unicaInstancia.PlayMusica2(musicaTormenta);
+            ManagerSonido.unicaInstancia.PlayMusica3(musicaTormenta2);
 
             StartCoroutine(tiempoAnimacionCambiarFase());
         }
@@ -238,8 +251,20 @@ public class Jefe : Enemigos
         Rayos.Play();
         Aura.Play();
         luzRoja.enabled = true;
+
+    }
+    IEnumerator tiempoAnimacionMuerte()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        Destroy(gameObject);
+        ManagerSonido.unicaInstancia.StopMusica2();
+        ManagerSonido.unicaInstancia.StopMusica3();
+        ManagerSonido.unicaInstancia.StopMusica1();
+        ManagerSonido.unicaInstancia.musica1.volume = 0.1f;
+        //ManagerSonido.unicaInstancia.PlayMusica1(musicaVictoria);
+        ManagerSonido.unicaInstancia.PlayEfectoSonido(musicaVictoria);
         
     }
-
 
 }
