@@ -31,6 +31,7 @@ public class Jefe : Enemigos
 
     int vidaMax;
     int fase = 1;
+    bool jefeMuerto = false;
 
     //cooldawns
     public float cooldawnLanzaRoca;
@@ -73,7 +74,7 @@ public class Jefe : Enemigos
             RenderSettings.skybox = Tormenta;
         }
 
-        if (vida <=0)
+        if (vida <=0 && !jefeMuerto)
         {
             MuerteJefe.Invoke();
             enemigoMuriendo = true;
@@ -82,12 +83,17 @@ public class Jefe : Enemigos
             Rayos.Stop();
             EsclarecerEscenario();
             anim.SetTrigger("Morir");
-
-            ManagerSonido.unicaInstancia.musica1.volume -= Time.deltaTime/15;
-            ManagerSonido.unicaInstancia.musica2.volume -= Time.deltaTime/20;
-            ManagerSonido.unicaInstancia.musica3.volume -= Time.deltaTime/20;
-
+            jefeMuerto = true;          
+            
             StartCoroutine(tiempoAnimacionMuerte());
+            
+        }
+
+        if (vida <= 0 && jefeMuerto)
+        {
+            ManagerSonido.unicaInstancia.musica1.volume -= Time.deltaTime / 15;
+            ManagerSonido.unicaInstancia.musica2.volume -= Time.deltaTime / 20;
+            ManagerSonido.unicaInstancia.musica3.volume -= Time.deltaTime / 20;
         }
 
     }
@@ -98,7 +104,7 @@ public class Jefe : Enemigos
     }
     public override void mirarJugador()
     {
-        if (jugadorCerca)
+        if (jugadorCerca && !jefeMuerto)
         {
             base.mirarJugador();
         }
@@ -106,7 +112,7 @@ public class Jefe : Enemigos
     }
     public override void seguirJugador()
     {
-        if (jugadorCerca)
+        if (jugadorCerca && !jefeMuerto)
         {
             base.seguirJugador();
             anim.SetFloat("Movimiento", 1f, 0.1f, Time.deltaTime);
@@ -123,10 +129,9 @@ public class Jefe : Enemigos
         tiempoParaInvocarGolems -= Time.deltaTime;
         tiempoParaLanzarPelota -= Time.deltaTime;
     }
-    
     public override void AtaqueBasico()
     {
-        if (jugadorCerca && tiempoParaLanzarRoca <= 0 && !estaRangoCerca && !estaAtacando)
+        if (jugadorCerca && tiempoParaLanzarRoca <= 0 && !estaRangoCerca && !estaAtacando && !jefeMuerto)
         {
             anim.SetTrigger("AtaquePiedras");
 
@@ -137,7 +142,7 @@ public class Jefe : Enemigos
     }
     public void InvocarGolems()
     {
-        if (jugadorCerca && tiempoParaInvocarGolems <= 0 && !estaRangoCerca && !estaAtacando)
+        if (jugadorCerca && tiempoParaInvocarGolems <= 0 && !estaRangoCerca && !estaAtacando && !jefeMuerto)
         {
             anim.SetTrigger("InvocarGolems");
 
@@ -148,7 +153,7 @@ public class Jefe : Enemigos
     }
     public override void AtaqueEspecial()
     {
-        if (jugadorCerca && tiempoParaLanzarPelota <= 0 && !estaRangoCerca && !estaAtacando && fase ==2)
+        if (jugadorCerca && tiempoParaLanzarPelota <= 0 && !estaRangoCerca && !estaAtacando && fase ==2 && !jefeMuerto)
         {
             anim.SetTrigger("InvocarPelota");
 
@@ -255,16 +260,17 @@ public class Jefe : Enemigos
     }
     IEnumerator tiempoAnimacionMuerte()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         
-        Destroy(gameObject);
+        
         ManagerSonido.unicaInstancia.StopMusica2();
         ManagerSonido.unicaInstancia.StopMusica3();
         ManagerSonido.unicaInstancia.StopMusica1();
         ManagerSonido.unicaInstancia.musica1.volume = 0.1f;
         //ManagerSonido.unicaInstancia.PlayMusica1(musicaVictoria);
         ManagerSonido.unicaInstancia.PlayEfectoSonido(musicaVictoria);
-        
+
+        Destroy(gameObject,10);
     }
 
 }
