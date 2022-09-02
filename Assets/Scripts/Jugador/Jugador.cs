@@ -20,9 +20,11 @@ public class Jugador : MonoBehaviour
     public static float stamina;
     public static float staminaMax;
 
-    static public bool jugadorInvulnerable;
+    public static bool jugadorInvulnerable;
 
     public static int monedas;
+
+    public static bool poderAlmaGolem;
 
     private void Awake()
     {
@@ -42,6 +44,7 @@ public class Jugador : MonoBehaviour
     private void Update()
     {
         regenerarStamina();
+        regenerarMana();
         ReiniciarApuntar();
 
         if (vida <=0)
@@ -55,6 +58,13 @@ public class Jugador : MonoBehaviour
         if (stamina < 100 && !_jugador.estaCorriendo && !_jugador.estaRolleando && _jugador.detectaPiso && !_jugador.estaAtacando && !_jugador.estaSaltando)
         {
             stamina += 0.04f;
+        }
+    }
+    void regenerarMana()
+    {
+        if (mana < 100 && !_jugador.poderActivado)
+        {
+            mana += 0.005f;
         }
     }
     public void retrocesoGolpe()
@@ -81,7 +91,7 @@ public class Jugador : MonoBehaviour
         {
             jugadorInvulnerable = true;
             StartCoroutine(tiempoInvulnerable());
-            ManagerSonido.unicaInstancia.PlayEfectoSonidoRandom(recibirDaño);
+            ManagerSonido.unicaInstancia.PlayEfectoSonidoRandom(recibirDaño, recibirDaño2);
         }
         if (other.CompareTag("Enemy") && !jugadorInvulnerable)
         {

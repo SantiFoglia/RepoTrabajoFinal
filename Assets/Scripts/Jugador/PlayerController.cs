@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     float costoCorrer = 0.01f;
     float costoRollear = 20f;
     float costoSaltar = 20f;
+    float costoPoder = 0.03f;
 
     //pausar
     private bool pausaActivada;
@@ -66,6 +67,10 @@ public class PlayerController : MonoBehaviour
     public AudioClip audioDispararFlecha;
     public AudioClip audioSaltar;
     public AudioClip audioPasos;
+
+    //poder
+    public bool poderActivado = false;
+    public ParticleSystem auraPoder;
 
     private void Start()
     {
@@ -93,7 +98,14 @@ public class PlayerController : MonoBehaviour
 
         Apuntar();
 
+        if (Jugador.poderAlmaGolem)
+        {
+            ActivarPoder();
+        }
+        
+
         TogglePause();
+    
         
     }
 
@@ -110,6 +122,7 @@ public class PlayerController : MonoBehaviour
         inputTeclas.Add("cambiarObjD", KeyCode.E);
         inputTeclas.Add("cambiarObjI", KeyCode.Q);
         inputTeclas.Add("pausa", KeyCode.Escape);
+        inputTeclas.Add("poder", KeyCode.F);
     }
 
     void DetectarPiso()
@@ -299,6 +312,30 @@ public class PlayerController : MonoBehaviour
             velocidad += 3;
 
             objAApuntar = 0;
+        }
+    }
+    void ActivarPoder()
+    {
+        if (Input.GetKeyDown(inputTeclas["poder"]) && !poderActivado && Jugador.mana > 0)
+        {
+            auraPoder.Play();
+            poderActivado = true;
+
+        }
+        else if (Input.GetKeyDown(inputTeclas["poder"]) && poderActivado || Jugador.mana <= 0)
+        {
+            auraPoder.Stop();
+            poderActivado = false;
+        }
+
+        if (poderActivado)
+        {
+            Flecha.daño = 20;
+            Jugador.mana -= costoPoder;
+        }
+        else
+        {
+            Flecha.daño = 10;
         }
     }
     public void TogglePause()

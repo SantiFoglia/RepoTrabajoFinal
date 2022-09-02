@@ -6,18 +6,29 @@ using UnityEngine.UI;
 
 public class UIJuego : MonoBehaviour
 {
+    //public static UIJuego unicaInstancia;
+
     public Text textoMonedas;
     public Image barraVida;
     public Image barraMana;
     public Image barraStamina;
 
+    //private void Awake()
+    //{
+    //    if (UIJuego.unicaInstancia == null)
+    //    {
+    //        UIJuego.unicaInstancia = this;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
 
-    // Update is called once per frame
+    //    DontDestroyOnLoad(gameObject);
+
+    //}
+
     void Update()
     {
         ActualizarVida();

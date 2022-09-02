@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuJuegoPrincipal : MonoBehaviour
 {
+    private void Awake()
+    {
+        ManagerSonido.unicaInstancia.PlayMusicaFondo();
+    }
     public void Jugar()
     {
         SceneManager.LoadScene(1);

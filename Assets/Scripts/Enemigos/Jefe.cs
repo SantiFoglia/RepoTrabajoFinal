@@ -284,8 +284,8 @@ public class Jefe : Enemigos
     private void OnDisable()
     {
         ManagerSonido.unicaInstancia.musica1.volume = 0.1f;
-        ManagerSonido.unicaInstancia.musica1.volume = 0.7f;
-        ManagerSonido.unicaInstancia.musica1.volume = 0.5f;
+        ManagerSonido.unicaInstancia.musica2.volume = 0.7f;
+        ManagerSonido.unicaInstancia.musica3.volume = 0.5f;
         ManagerSonido.unicaInstancia.PlayMusicaFondo();
     }
 
