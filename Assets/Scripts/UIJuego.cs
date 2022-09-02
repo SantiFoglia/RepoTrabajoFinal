@@ -24,6 +24,8 @@ public class UIJuego : MonoBehaviour
         ActualizarMana();
         ActualizarStamina();
         ActualizarMonedas();
+
+        
     }
     private void ActualizarVida()
     {
@@ -49,4 +51,5 @@ public class UIJuego : MonoBehaviour
         }
         
     }
+    
 }

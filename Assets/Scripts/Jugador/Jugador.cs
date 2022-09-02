@@ -8,6 +8,9 @@ public class Jugador : MonoBehaviour
     PlayerController _jugador;
     Rigidbody rb;
 
+    public AudioClip recibirDaño;
+    public AudioClip recibirDaño2;
+
     [SerializeField] private UnityEvent PlayerDeath;
 
     public static float vida;
@@ -78,12 +81,14 @@ public class Jugador : MonoBehaviour
         {
             jugadorInvulnerable = true;
             StartCoroutine(tiempoInvulnerable());
+            ManagerSonido.unicaInstancia.PlayEfectoSonidoRandom(recibirDaño);
         }
         if (other.CompareTag("Enemy") && !jugadorInvulnerable)
         {
             vida -= Enemigos.dañoContacto;
             jugadorInvulnerable = true;
             StartCoroutine(tiempoInvulnerable());
+            ManagerSonido.unicaInstancia.PlayEfectoSonidoRandom(recibirDaño, recibirDaño2);
         }
     }
 

@@ -6,7 +6,7 @@ public class CamaraController : MonoBehaviour
 {
     public Transform mira;
     public float velCamara = 120;
-    public float sensibilidad = 150;
+    public float sensibilidad = 100;
 
     private float mouseX;
     private float mouseY;

@@ -7,9 +7,12 @@ public class ManagerSonido : MonoBehaviour
     public static ManagerSonido unicaInstancia;
 
     public AudioSource efectoSonido;
+    public AudioSource efectoSonido2;
     public AudioSource musica1;
     public AudioSource musica2;
     public AudioSource musica3;
+
+    public AudioClip musicaFondo;
 
     public float rangoSonidoBajo = 0.95f;
     public float rangoSonidoAlto = 1.05f;
@@ -62,6 +65,11 @@ public class ManagerSonido : MonoBehaviour
         efectoSonido.clip = clip;
         efectoSonido.Play();
     }
+    public void PlayEfectoSonido2(AudioClip clip)
+    {
+        efectoSonido2.clip = clip;
+        efectoSonido2.Play();
+    }
     public void PlayEfectoSonidoRandom(params AudioClip[] clips)
     {
         int randomIndex = Random.Range(0, clips.Length);
@@ -69,5 +77,10 @@ public class ManagerSonido : MonoBehaviour
         efectoSonido.pitch = randomPitch;
         efectoSonido.clip = clips[randomIndex];
         efectoSonido.Play();
+    }
+    public void PlayMusicaFondo()
+    {
+        musica1.clip = musicaFondo;
+        musica1.Play();
     }
 }

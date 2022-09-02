@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemigos : MonoBehaviour
 {
-    public int vida;
+    public float vida;
+    public float vidaMax;
     public string nombre;
     public float velocidad;
     public float rangoVision;

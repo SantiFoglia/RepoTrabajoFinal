@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Jefe : Enemigos
 {
@@ -29,7 +30,8 @@ public class Jefe : Enemigos
     public Light luz;
     public Light luzRoja;
 
-    int vidaMax;
+    public Image barraVidaJefe;
+
     int fase = 1;
     bool jefeMuerto = false;
 
@@ -58,6 +60,7 @@ public class Jefe : Enemigos
 
     private void Update()
     {
+        ActualizarVidaJefe();
         detectarJugador();
         mirarJugador();
         seguirJugador();
@@ -67,7 +70,7 @@ public class Jefe : Enemigos
         AtaqueEspecial();
         CambioFase();
 
-        if (fase==2)
+        if (fase==2 && !jefeMuerto)
         {
             OscurecerEscenario();
             AumentarTamaño();
@@ -83,8 +86,8 @@ public class Jefe : Enemigos
             Rayos.Stop();
             EsclarecerEscenario();
             anim.SetTrigger("Morir");
-            jefeMuerto = true;          
-            
+            jefeMuerto = true;
+
             StartCoroutine(tiempoAnimacionMuerte());
             
         }
@@ -94,6 +97,7 @@ public class Jefe : Enemigos
             ManagerSonido.unicaInstancia.musica1.volume -= Time.deltaTime / 15;
             ManagerSonido.unicaInstancia.musica2.volume -= Time.deltaTime / 20;
             ManagerSonido.unicaInstancia.musica3.volume -= Time.deltaTime / 20;
+
         }
 
     }
@@ -199,6 +203,10 @@ public class Jefe : Enemigos
         }
         
     }
+    void ActualizarVidaJefe()
+    {
+        barraVidaJefe.fillAmount = vida / vidaMax;
+    }
     IEnumerator tiempoAnimacionLanzarRoca()
     {
 
@@ -266,11 +274,19 @@ public class Jefe : Enemigos
         ManagerSonido.unicaInstancia.StopMusica2();
         ManagerSonido.unicaInstancia.StopMusica3();
         ManagerSonido.unicaInstancia.StopMusica1();
-        ManagerSonido.unicaInstancia.musica1.volume = 0.1f;
-        //ManagerSonido.unicaInstancia.PlayMusica1(musicaVictoria);
-        ManagerSonido.unicaInstancia.PlayEfectoSonido(musicaVictoria);
+        
+        ManagerSonido.unicaInstancia.PlayEfectoSonido2(musicaVictoria);
+        
 
-        Destroy(gameObject,10);
+        Destroy(gameObject,41);
+    }
+
+    private void OnDisable()
+    {
+        ManagerSonido.unicaInstancia.musica1.volume = 0.1f;
+        ManagerSonido.unicaInstancia.musica1.volume = 0.7f;
+        ManagerSonido.unicaInstancia.musica1.volume = 0.5f;
+        ManagerSonido.unicaInstancia.PlayMusicaFondo();
     }
 
 }

@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
     private bool pausaActivada;
     public GameObject menuPausa;
 
+    //sonidos
+    public AudioClip audioRoll;
+    public AudioClip audioDispararFlecha;
+    public AudioClip audioSaltar;
+    public AudioClip audioPasos;
 
     private void Start()
     {
@@ -122,6 +127,7 @@ public class PlayerController : MonoBehaviour
         {
             estaSaltando = true;
             velocidad = velocidadSaltando;
+
         }
         else
         {
@@ -140,6 +146,8 @@ public class PlayerController : MonoBehaviour
             puedeAtacar = false;
             anim.SetTrigger("roll");
 
+            ManagerSonido.unicaInstancia.PlayEfectoSonido(audioRoll);
+
             Jugador.stamina -= costoRollear;
         }
 
@@ -151,6 +159,8 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(alturaDeSalto * -2 * gravedad);
             anim.SetBool("salto", true);
+
+            ManagerSonido.unicaInstancia.PlayEfectoSonido(audioSaltar);
 
             Jugador.stamina -= costoSaltar;
 
@@ -167,6 +177,7 @@ public class PlayerController : MonoBehaviour
         Vector3 direccion = new Vector3(hor, 0, ver).normalized;
 
         if (direccion.magnitude <= 0) anim.SetFloat("Movimientos", 0, 0.1f, Time.deltaTime);
+        {
 
             if (direccion.magnitude >= 0.1f)
             {
@@ -184,10 +195,13 @@ public class PlayerController : MonoBehaviour
 
                     anim.SetFloat("Movimientos", 1f, 0.1f, Time.deltaTime);
 
+
                     estaCorriendo = true;
                     Jugador.stamina -= costoCorrer;
+                    
+
                 }
-                else if(!estaAtacando)
+                else if (!estaAtacando)
                 {
                     //ahora se va a mover hacia el lado donde giramos
                     Vector3 mover = Quaternion.Euler(0, objetivoAngulo, 0) * Vector3.forward;
@@ -200,7 +214,8 @@ public class PlayerController : MonoBehaviour
 
 
             }
-
+        }
+        
     }
     void Disparar()
     {
@@ -212,6 +227,7 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("ataque");
             StartCoroutine(tiempoAnimacionAtaque());
             Jugador.stamina -= costoDisparar;
+            ManagerSonido.unicaInstancia.PlayEfectoSonido(audioDispararFlecha);
 
         }
     }
