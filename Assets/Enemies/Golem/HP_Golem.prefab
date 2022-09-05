@@ -529,6 +529,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 0
+  vidaMax: 0
   nombre: Golem
   velocidad: 0
   rangoVision: 100
@@ -545,10 +546,12 @@ MonoBehaviour:
   jugadorEnCampoVision: 0
   enemigoInvulnerable: 0
   jugadorCerca: 0
+  prefabMonedas: {fileID: 283253355756298250, guid: 3bc0dc2cd3658444890f66bec6d6c394, type: 3}
   prefabRoca: {fileID: 1260152368072798, guid: 4bf449b1b6e781140a548b42020600f6, type: 3}
   spawnRoca: {fileID: 7508326080811506263}
   puntoMiraRay: {fileID: 5542946429801806068}
   cooldawnLanzaRoca: 6
+  prefabPocion: {fileID: 2248305752170312114, guid: af0e9b28220f7fb42b1ee0a468fc8f9d, type: 3}
 --- !u!65 &4846353110336421513
 BoxCollider:
   m_ObjectHideFlags: 0

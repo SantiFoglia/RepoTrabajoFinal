@@ -267,7 +267,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(inputTeclas["apuntar"]) && !Enemigos.enemigoMuriendo)
         {
-            
+
             float hor = Input.GetAxis("Horizontal");
             float ver = Input.GetAxis("Vertical");
 
@@ -304,6 +304,10 @@ public class PlayerController : MonoBehaviour
             estaApuntando = false;
             anim.SetBool("apuntando", false);
         }
+        if (Input.GetKey(inputTeclas["apuntar"]) && Enemigos.enemigoMuriendo)
+        {
+            arrayEnemigos = Physics.OverlapSphere(transform.position, 40f, LayerMaskObjAApuntar);
+        }
 
         if (Input.GetKeyUp(inputTeclas["apuntar"]) && !Enemigos.enemigoMuriendo)
         {
@@ -313,6 +317,7 @@ public class PlayerController : MonoBehaviour
 
             objAApuntar = 0;
         }
+        
     }
     void ActivarPoder()
     {

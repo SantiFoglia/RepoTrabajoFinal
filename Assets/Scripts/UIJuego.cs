@@ -9,6 +9,7 @@ public class UIJuego : MonoBehaviour
     //public static UIJuego unicaInstancia;
 
     public Text textoMonedas;
+    public Text textoCantidadPociones;
     public Image barraVida;
     public Image barraMana;
     public Image barraStamina;
@@ -35,6 +36,7 @@ public class UIJuego : MonoBehaviour
         ActualizarMana();
         ActualizarStamina();
         ActualizarMonedas();
+        ActualizarPociones();
 
         
     }
@@ -62,5 +64,8 @@ public class UIJuego : MonoBehaviour
         }
         
     }
-    
+    void ActualizarPociones()
+    {
+        textoCantidadPociones.text = "x" + Jugador.pocionesVida;
+    }
 }

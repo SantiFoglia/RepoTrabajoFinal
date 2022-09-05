@@ -24,10 +24,13 @@ public class Enemigos : MonoBehaviour
     public bool jugadorEnCampoVision;
 
     public bool enemigoInvulnerable;
+    public float tiempoMuriendo = 0.2f;
 
     public bool jugadorCerca;
 
     static public bool enemigoMuriendo;
+
+    public GameObject prefabMonedas;
 
     virtual public void AtaqueBasico()
     {

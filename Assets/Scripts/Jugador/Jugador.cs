@@ -24,6 +24,8 @@ public class Jugador : MonoBehaviour
 
     public static int monedas;
 
+    public static int pocionesVida;
+
     public static bool poderAlmaGolem;
 
     private void Awake()
@@ -39,10 +41,14 @@ public class Jugador : MonoBehaviour
         stamina = staminaMax;
 
         monedas = 0;
+
+        pocionesVida = 2;
     }
 
     private void Update()
     {
+        limitarParametros();
+
         regenerarStamina();
         regenerarMana();
         ReiniciarApuntar();
@@ -78,7 +84,21 @@ public class Jugador : MonoBehaviour
             StartCoroutine(delayMuerteEnemigo());
         }
     }
-
+    public void limitarParametros()
+    {
+        if (vida > vidaMax)
+        {
+            vida = vidaMax;
+        }
+        if (mana > manaMax)
+        {
+            mana = manaMax;
+        }
+        if (stamina > staminaMax)
+        {
+            stamina = staminaMax;
+        }
+    }
     IEnumerator delayMuerteEnemigo()
     {
         yield return new WaitForSeconds(1f);

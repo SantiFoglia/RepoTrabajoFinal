@@ -13,6 +13,8 @@ public class Golem : Enemigos
     public float cooldawnLanzaRoca;
     float tiempoParaLanzarRoca;
 
+
+    public GameObject prefabPocion;
     void Start()
     {
         vida = 50;
@@ -45,14 +47,18 @@ public class Golem : Enemigos
 
         if(vida <= 0)
         {
-            enemigoMuriendo = true;
-            Destroy(gameObject);
+            
+            muriendo();
+            anim.SetTrigger("Morir");
+            gameObject.tag = "Untagged";
+            gameObject.layer = LayerMask.NameToLayer("Default");
+            StartCoroutine(tiempoAnimacionMuerte());
         }
     }
 
     override public void AtaqueEspecial()
     {
-        if (jugadorCerca && tiempoParaLanzarRoca <= 0 && !estaRangoCerca)
+        if (jugadorCerca && tiempoParaLanzarRoca <= 0 && !estaRangoCerca && vida > 0)
         {
             anim.SetTrigger("Attack01");
 
@@ -68,7 +74,7 @@ public class Golem : Enemigos
         if (Physics.Raycast(puntoMiraRay.transform.position, Vector3.forward, out ray, rangoAtaqueBasico))
         {
             
-            if (ray.transform.tag == "Player")
+            if (ray.transform.tag == "Player" && vida > 0)
             {
                 estaRangoCerca = true;
                 anim.SetTrigger("Attack02");
@@ -90,7 +96,7 @@ public class Golem : Enemigos
     }
     public override void mirarJugador()
     {
-        if (jugadorCerca)
+        if (jugadorCerca && vida > 0)
         {
             base.mirarJugador();
         }
@@ -98,7 +104,7 @@ public class Golem : Enemigos
     }
     public override void seguirJugador()
     {
-        if (jugadorCerca && !estaAtacando)
+        if (jugadorCerca && !estaAtacando && vida > 0)
         {
             base.seguirJugador();
             anim.SetBool("estaCaminando", true);
@@ -108,6 +114,20 @@ public class Golem : Enemigos
             anim.SetBool("estaCaminando", false);
         }
         
+    }
+    void Drop()
+    {
+        int randNum = UnityEngine.Random.Range(0, 100);
+        if (randNum >= 90)
+        {
+            Instantiate(prefabPocion, gameObject.transform.position, gameObject.transform.rotation);
+        }
+        else
+        {
+            Vector3 positionDrop = gameObject.transform.position;
+            positionDrop.y = positionDrop.y + 1;
+            Instantiate(prefabMonedas, positionDrop, gameObject.transform.rotation);
+        }
     }
 
     IEnumerator tiempoAnimacionLanzarRoca()
@@ -120,4 +140,25 @@ public class Golem : Enemigos
         Roca.GetComponent<Rigidbody>().AddForce(spawnRoca.forward * 40, ForceMode.Impulse);
         estaAtacando = false;
     }
+    IEnumerator tiempoAnimacionMuerte()
+    {
+        yield return new WaitForSeconds(3);
+        Drop();
+        Destroy(gameObject);
+    }
+    void muriendo()
+    {
+        tiempoMuriendo -= Time.deltaTime;
+        if (tiempoMuriendo > 0)
+        {
+            enemigoMuriendo = true;
+        }
+        else
+        {
+            enemigoMuriendo = false;
+        }
+    }
+
+        
+    
 }
