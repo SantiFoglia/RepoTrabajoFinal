@@ -98,6 +98,8 @@ public class PlayerController : MonoBehaviour
 
         Apuntar();
 
+        UsarPocion();
+
         if (Jugador.poderAlmaGolem)
         {
             ActivarPoder();
@@ -123,6 +125,7 @@ public class PlayerController : MonoBehaviour
         inputTeclas.Add("cambiarObjI", KeyCode.Q);
         inputTeclas.Add("pausa", KeyCode.Escape);
         inputTeclas.Add("poder", KeyCode.F);
+        inputTeclas.Add("usarPocion", KeyCode.R);
     }
 
     void DetectarPiso()
@@ -341,6 +344,22 @@ public class PlayerController : MonoBehaviour
         else
         {
             Flecha.daño = 10;
+        }
+    }
+    void UsarPocion()
+    {
+        if (Input.GetKeyDown(inputTeclas["usarPocion"]) && Jugador.pocionesVida > 0 && Jugador.vida < Jugador.vidaMax)
+        {
+            Jugador.pocionesVida -= 1;
+
+            if (Jugador.vida >= Jugador.vidaMax-50)
+            {
+                Jugador.vida = Jugador.vidaMax;
+            }
+            else
+            {
+                Jugador.vida += 50;
+            }
         }
     }
     public void TogglePause()
