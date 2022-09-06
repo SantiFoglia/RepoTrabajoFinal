@@ -45,7 +45,7 @@ public class Jefe : Enemigos
 
     void Start()
     {
-        vida = 100;
+        vida = 400;
         vidaMax = vida;
         nombre = "Jefe";
         velocidad = 3;
@@ -87,6 +87,11 @@ public class Jefe : Enemigos
             EsclarecerEscenario();
             anim.SetTrigger("Morir");
             jefeMuerto = true;
+
+            for (int i = 0; i < 10; i++)
+            {
+                Drop();
+            }
 
             StartCoroutine(tiempoAnimacionMuerte());
             
@@ -206,6 +211,14 @@ public class Jefe : Enemigos
     void ActualizarVidaJefe()
     {
         barraVidaJefe.fillAmount = vida / vidaMax;
+    }
+    void Drop()
+    {
+        Vector3 positionDrop = gameObject.transform.position;
+        positionDrop.y = positionDrop.y + 1;
+        positionDrop.x += UnityEngine.Random.Range(-2, 2);
+        positionDrop.z += UnityEngine.Random.Range(-2, 2);
+        Instantiate(prefabMonedas, positionDrop, gameObject.transform.rotation);
     }
     IEnumerator tiempoAnimacionLanzarRoca()
     {

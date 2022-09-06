@@ -7,7 +7,7 @@ public class MiniGolem : Enemigos
     // Start is called before the first frame update
     void Start()
     {
-        vida = 50;
+        vida = 30;
         nombre = "MiniGolem";
         velocidad = 2;
         rangoVision = 30f;
@@ -28,6 +28,7 @@ public class MiniGolem : Enemigos
         if (vida <= 0)
         {
             enemigoMuriendo = true;
+            Drop();
             Destroy(gameObject);
         }
     }
@@ -65,5 +66,12 @@ public class MiniGolem : Enemigos
         {
             anim.SetTrigger("estaAtacando");
         }
+    }
+
+    void Drop()
+    {
+        Vector3 positionDrop = gameObject.transform.position;
+        positionDrop.y = positionDrop.y + 1;
+        Instantiate(prefabMonedas, positionDrop, gameObject.transform.rotation);
     }
 }

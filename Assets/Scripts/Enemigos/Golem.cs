@@ -120,6 +120,8 @@ public class Golem : Enemigos
         int randNum = UnityEngine.Random.Range(0, 100);
         if (randNum >= 90)
         {
+            Vector3 positionDrop = gameObject.transform.position;
+            positionDrop.y = positionDrop.y + 1;
             Instantiate(prefabPocion, gameObject.transform.position, gameObject.transform.rotation);
         }
         else

@@ -8,6 +8,8 @@ public class MenuJuegoPrincipal : MonoBehaviour
     private void Awake()
     {
         ManagerSonido.unicaInstancia.PlayMusicaFondo();
+        ManagerSonido.unicaInstancia.StopMusica2();
+        ManagerSonido.unicaInstancia.StopMusica3();
     }
     public void Jugar()
     {

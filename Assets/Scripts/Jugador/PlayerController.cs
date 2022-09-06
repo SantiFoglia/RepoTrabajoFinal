@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     //pausar
     private bool pausaActivada;
     public GameObject menuPausa;
+    public GameObject menuControles;
 
     //sonidos
     public AudioClip audioRoll;
@@ -127,7 +128,6 @@ public class PlayerController : MonoBehaviour
         inputTeclas.Add("poder", KeyCode.F);
         inputTeclas.Add("usarPocion", KeyCode.R);
     }
-
     void DetectarPiso()
     {
         tocaPiso = Physics.CheckSphere(detectaPiso.position, distanciaPiso, mascaraPiso);
@@ -369,6 +369,7 @@ public class PlayerController : MonoBehaviour
             if (pausaActivada)
             {
                 menuPausa.SetActive(false);
+                menuControles.SetActive(false);
                 Time.timeScale = 1;
                 pausaActivada = false;
                 Cursor.lockState = CursorLockMode.Locked;

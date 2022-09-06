@@ -9,10 +9,12 @@ public class UIJuego : MonoBehaviour
     //public static UIJuego unicaInstancia;
 
     public Text textoMonedas;
+    public Text textoMonedasFinal;
     public Text textoCantidadPociones;
     public Image barraVida;
     public Image barraMana;
     public Image barraStamina;
+    public Image almaGolem;
 
     //private void Awake()
     //{
@@ -37,6 +39,8 @@ public class UIJuego : MonoBehaviour
         ActualizarStamina();
         ActualizarMonedas();
         ActualizarPociones();
+        ActualizarMonedasFinal();
+        MostrarAlma();
 
         
     }
@@ -52,7 +56,7 @@ public class UIJuego : MonoBehaviour
     {
         barraStamina.fillAmount = Jugador.stamina / Jugador.staminaMax;
     }
-    void ActualizarMonedas()
+    private void ActualizarMonedas()
     {
         if (Jugador.monedas<999999)
         {
@@ -64,8 +68,35 @@ public class UIJuego : MonoBehaviour
         }
         
     }
-    void ActualizarPociones()
+    private void ActualizarPociones()
     {
         textoCantidadPociones.text = "x" + Jugador.pocionesVida;
+    }
+    private void ActualizarMonedasFinal()
+    {
+        textoMonedasFinal.text = $"Conseguiste {Jugador.monedas} Monedas";
+    }
+    private void MostrarAlma()
+    {
+        if (Jugador.poderAlmaGolem)
+        {
+            almaGolem.gameObject.SetActive(true);
+        }
+        else
+        {
+            almaGolem.gameObject.SetActive(false);
+        }
+    }
+
+
+    public void ActivarMouse()
+    {
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+    public void DesactivarMouse()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
