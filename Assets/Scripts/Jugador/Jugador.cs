@@ -56,6 +56,8 @@ public class Jugador : MonoBehaviour
         if (vida <=0)
         {
             PlayerDeath?.Invoke();
+            ManagerSonido.unicaInstancia.efectoSonido.Stop();
+            ManagerSonido.unicaInstancia.efectoSonido2.Stop();
         }
     }
 
