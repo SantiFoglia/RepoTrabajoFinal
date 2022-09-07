@@ -16,7 +16,6 @@ public class Roca : MonoBehaviour
         if (other.CompareTag("Player") && !Jugador.jugadorInvulnerable)
         {
             Jugador.vida -= daño;
-            print("Pega");
         }
     }
 
