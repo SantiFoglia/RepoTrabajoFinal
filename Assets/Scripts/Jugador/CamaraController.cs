@@ -13,6 +13,8 @@ public class CamaraController : MonoBehaviour
     private float rotX = 0;
     private float rotY = 0;
 
+    bool apuntando;
+
     PlayerController _playerController;
 
     private void Start()
@@ -40,11 +42,12 @@ public class CamaraController : MonoBehaviour
 
         if (_playerController.estaApuntando && !Enemigos.enemigoMuriendo)
         {
+
             for (int i = 0; i < _playerController.arrayEnemigos.Length; i++)
             {
                 if (_playerController.arrayEnemigos[i].CompareTag("Enemy") && !Enemigos.enemigoMuriendo)
                 {
-                    
+
                     transform.LookAt(_playerController.arrayEnemigos[objetivo].transform);
                     if (!_playerController.estaRolleando && !Enemigos.enemigoMuriendo)
                     {
@@ -54,6 +57,7 @@ public class CamaraController : MonoBehaviour
                 }
             }
         }
+        
     }
 
     private void LateUpdate()
@@ -62,6 +66,5 @@ public class CamaraController : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, mira.position, velCamara * Time.deltaTime);
 
     }
-
 
 }

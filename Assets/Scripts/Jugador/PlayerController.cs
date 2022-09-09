@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     float costoCorrer = 0.01f;
     float costoRollear = 20f;
     float costoSaltar = 20f;
-    float costoPoder = 0.03f;
+    float costoPoder = 0.2f;
 
     //pausar
     private bool pausaActivada;
@@ -91,20 +91,18 @@ public class PlayerController : MonoBehaviour
 
         Salto();
 
-        Movimiento();
-
         CooldownDisparo();
 
         Disparar();
-
-        Apuntar();
-
-        UsarPocion();
 
         if (Jugador.poderAlmaGolem)
         {
             ActivarPoder();
         }
+
+        UsarPocion();
+
+        Apuntar();
         
 
         TogglePause();
@@ -112,6 +110,11 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    private void FixedUpdate()
+    {
+        PoderActivado();
+        Movimiento();
+    }
 
     void CrearinputTeclas()
     {
@@ -336,6 +339,10 @@ public class PlayerController : MonoBehaviour
             poderActivado = false;
         }
 
+        
+    }
+    void PoderActivado()
+    {
         if (poderActivado)
         {
             Flecha.daño = 20;

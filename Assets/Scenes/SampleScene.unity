@@ -29319,7 +29319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 481256, guid: 8b2d47fdc2e25ac4f9721480a68bbefa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5999875
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 481256, guid: 8b2d47fdc2e25ac4f9721480a68bbefa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36643,7 +36643,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -36739,7 +36739,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.07
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -48938,6 +48938,86 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b2d47fdc2e25ac4f9721480a68bbefa, type: 3}
+--- !u!1 &1596510119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1596510120}
+  - component: {fileID: 1596510122}
+  - component: {fileID: 1596510121}
+  m_Layer: 5
+  m_Name: NumerosVida
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1596510120
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596510119}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1830587130}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 8, y: -5}
+  m_SizeDelta: {x: 50, y: 20}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1596510121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596510119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 4cac16ed8410c724bba68e22a8cd672d, type: 3}
+    m_FontSize: 8
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 100/100
+--- !u!222 &1596510122
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596510119}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1597002620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52217,6 +52297,7 @@ MonoBehaviour:
   textoMonedas: {fileID: 1022440098}
   textoMonedasFinal: {fileID: 1155120202}
   textoCantidadPociones: {fileID: 1247815802}
+  textoNumeroVida: {fileID: 1596510121}
   barraVida: {fileID: 1537977478}
   barraMana: {fileID: 295779976}
   barraStamina: {fileID: 321899076}
@@ -54663,6 +54744,7 @@ RectTransform:
   m_Children:
   - {fileID: 196414708}
   - {fileID: 1537977477}
+  - {fileID: 1596510120}
   m_Father: {fileID: 991399150}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61402,6 +61484,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 209846288874867720, guid: fc8b226b45aa4944c9e640cadc87e3e9, type: 3}
+      propertyPath: m_Size.y
+      value: 1.774694
+      objectReference: {fileID: 0}
+    - target: {fileID: 209846288874867720, guid: fc8b226b45aa4944c9e640cadc87e3e9, type: 3}
+      propertyPath: m_Center.x
+      value: 0.008655577
+      objectReference: {fileID: 0}
+    - target: {fileID: 209846288874867720, guid: fc8b226b45aa4944c9e640cadc87e3e9, type: 3}
+      propertyPath: m_Center.y
+      value: 0.8761871
+      objectReference: {fileID: 0}
     - target: {fileID: 209846288874867722, guid: fc8b226b45aa4944c9e640cadc87e3e9, type: 3}
       propertyPath: menuPausa
       value: 
@@ -61414,6 +61508,10 @@ PrefabInstance:
       propertyPath: menuControles
       value: 
       objectReference: {fileID: 1254877558}
+    - target: {fileID: 209846288874867723, guid: fc8b226b45aa4944c9e640cadc87e3e9, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 209846289975740350, guid: fc8b226b45aa4944c9e640cadc87e3e9, type: 3}
       propertyPath: PlayerDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

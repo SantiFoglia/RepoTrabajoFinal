@@ -12,9 +12,9 @@ public class EventoJefe : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             EmpezarPeleaJefe.Invoke();
-            ManagerSonido.unicaInstancia.musica1.volume = 0.4f;
-            ManagerSonido.unicaInstancia.musica2.volume = 0.1f;
-            ManagerSonido.unicaInstancia.musica3.volume = 0.08f;
+            ManagerSonido.unicaInstancia.musica1.volume = 0.5f;
+            ManagerSonido.unicaInstancia.musica2.volume = 0.3f;
+            ManagerSonido.unicaInstancia.musica3.volume = 0.3f;
             ManagerSonido.unicaInstancia.PlayMusica1(musicaJefe);
         }
     }

@@ -118,7 +118,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 795
+  controlID: 13810
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 796
+  controlID: 13811
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 882
+  controlID: 13812
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 883
+  controlID: 13813
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -273,7 +273,7 @@ MonoBehaviour:
   - {fileID: 16}
   - {fileID: 17}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 0
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -320,8 +320,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 257
-    y: 19
+    x: 256
+    y: 73
     width: 785
     height: 320
   m_ViewDataDictionary: {fileID: 0}
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
-  m_EnterPlayModeBehavior: 1
+  m_EnterPlayModeBehavior: 0
   m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
@@ -425,23 +425,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 407dffffdefaffffec870000
+      m_SelectedIDs: 8e690700
+      m_LastClickedID: 485774
+      m_ExpandedIDs: acd7fcffbe02fdff660dfeffba0dfeffbe25feffd625feffdefaffffeadf01007ce00100c8f10100ea3305007237050050490500184d0500c8500500466406001e6806000e72060014740600582f07009c6607002e680700d06a0700
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Tree9_3
+        m_OriginalName: Tree9_3
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 416456
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 9}
       m_SearchString: 
@@ -660,9 +660,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: -231, y: 124}
+      snapOffset: {x: -231, y: -197}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 1
+      snapCorner: 3
       id: Scene View/Particles
       index: 10
       layout: 4
@@ -676,9 +676,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 226.63918, y: 65.791916, z: 79.36813}
+    m_Target: {x: 79.799995, y: 276.39, z: 0}
     speed: 2
-    m_Value: {x: 226.63918, y: 65.791916, z: 79.36813}
+    m_Value: {x: 79.8, y: 276.39, z: 0.000017656006}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -725,13 +725,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.27367446, y: 0.044511016, z: -0.012393424, w: 0.96071845}
+    m_Target: {x: 0.0058531896, y: -0.9935188, z: 0.09268337, w: 0.06570919}
     speed: 2
-    m_Value: {x: -0.27367446, y: -0.044511016, z: 0.012393425, w: -0.9607185}
+    m_Value: {x: 0.0058531263, y: -0.99350804, z: 0.09268236, w: 0.06570847}
   m_Size:
-    m_Target: 199.27235
+    m_Target: 69.70937
     speed: 2
-    m_Value: 199.27235
+    m_Value: 72.99411
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -797,22 +797,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 62
   m_LastFolders:
-  - Assets/Scenes
+  - Assets
   m_LastFoldersGridSize: 62
   m_LastProjectPath: C:\Users\Santi\OneDrive\Escritorio\Repo Trabajo Final\RepoTrabajoFinal\RepoTrabajoFinal
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 115}
-    m_SelectedIDs: bc6a0000
-    m_LastClickedID: 27324
-    m_ExpandedIDs: 00000000486900004a6900004c6900004e69000050690000526900005469000056690000586900005a69000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 727a0000
+    m_LastClickedID: 31346
+    m_ExpandedIDs: 00000000627a0000647a0000667a0000687a00006a7a00006c7a00006e7a0000707a0000727a0000747a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -840,7 +840,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000486900004a6900004c6900004e69000050690000526900005469000056690000586900005a69000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000627a0000647a0000667a0000687a00006a7a00006c7a00006e7a0000707a0000727a0000747a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -867,8 +867,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000a2a804000c8d0500ea7d00005e8400003a880000e07d0000a0e10000fc56020006580200165902000c5b02001a5c02002c5d0200385e02007c5f02005c6202004c630200068000000000000098eeffff
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: c6230000a2a804000c8d0500ea7d00005e8400003a880000e07d0000a0e10000fc56020006580200165902000c5b02001a5c02002c5d0200385e02007c5f02005c6202004c630200068000000000000098eeffff921c0500
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

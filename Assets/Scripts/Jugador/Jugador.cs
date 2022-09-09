@@ -49,8 +49,7 @@ public class Jugador : MonoBehaviour
     {
         limitarParametros();
 
-        regenerarStamina();
-        regenerarMana();
+        
         ReiniciarApuntar();
 
         if (vida <=0)
@@ -60,21 +59,36 @@ public class Jugador : MonoBehaviour
             ManagerSonido.unicaInstancia.efectoSonido2.Stop();
         }
     }
+    private void FixedUpdate()
+    {
+        regenerarStamina();
+        regenerarMana();
+        
+    }
 
     void regenerarStamina()
     {
         if (stamina < 100 && !_jugador.estaCorriendo && !_jugador.estaRolleando && _jugador.detectaPiso && !_jugador.estaAtacando && !_jugador.estaSaltando)
         {
-            stamina += 0.04f;
+            if (_jugador.estaApuntando)
+            {
+                stamina += 0.1f;
+            }
+            else
+            {
+                stamina += 0.2f;
+            }
+            
         }
     }
     void regenerarMana()
     {
         if (mana < 100 && !_jugador.poderActivado)
         {
-            mana += 0.005f;
+            mana += 0.05f;
         }
     }
+    
     public void retrocesoGolpe()
     {
         

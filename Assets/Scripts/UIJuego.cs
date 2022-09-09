@@ -11,6 +11,7 @@ public class UIJuego : MonoBehaviour
     public Text textoMonedas;
     public Text textoMonedasFinal;
     public Text textoCantidadPociones;
+    public Text textoNumeroVida;
     public Image barraVida;
     public Image barraMana;
     public Image barraStamina;
@@ -47,6 +48,7 @@ public class UIJuego : MonoBehaviour
     private void ActualizarVida()
     {
         barraVida.fillAmount = Jugador.vida / Jugador.vidaMax;
+        textoNumeroVida.text = Jugador.vida + "/" + Jugador.vidaMax;
     }
     private void ActualizarMana()
     {
